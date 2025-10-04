@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Наші послуги - The Gilded Hour</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="style_services.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+</head>
+<body>
+<!--HEADER-->
+<header>
+    <div class="header-content">
+        <div class="logo">
+            <h2>The Gilded</h2>
+            <p>.hour</p>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="Menu.html">Меню</a></li>
+                <li><a href="Services.html">Послуги</a></li>
+                <li><a href="About.html">Про нас</a></li>
+            </ul>
+            <a href="Contacts.html">
+                <button class="button-contacts">
+                    <img src="img/phone.png" alt="Phone">
+                    Контакти
+                </button>
+            </a>
+        </nav>
+    </div>
+</header>
+<!--HEADER-->
+
+<main>
+    <section class="section-hero">
+        <div class="hero-content">
+            <h1>Наші послуги</h1>
+            <p>Від вишуканих вечерь у нашому ресторані до кейтерингу та доставки — ми створимо незабутні гастрономічні
+                враження для вас</p>
+        </div>
+    </section>
+
+    <section class="section-services">
+        <div class="container">
+            <div class="services-intro">
+                <h2>Повний спектр послуг для вашої насолоди</h2>
+                <p>The Gilded Hour пропонує різноманітні послуги, щоб задовольнити ваші гастрономічні потреби. Незалежно
+                    від того, чи плануєте ви романтичну вечерю, бізнес-ланч, особливу подію чи просто хочете
+                    насолодитися нашими стравами вдома — ми маємо ідеальне рішення для вас.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="img/restaurant-icon.png" alt="Ресторан">
+                    </div>
+                    <h3>Відвідування ресторану</h3>
+                    <p>Насолоджуйтесь непереверщеною атмосферою нашого ресторану, де кожна деталь створена для вашого
+                        комфорту та задоволення.</p>
+                    <ul>
+                        <li>Романтичні вечері</li>
+                        <li>Бізнес-ланчі</li>
+                        <li>Сімейні обіди</li>
+                        <li>Особливі події</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="img/delivery-icon.png" alt="Доставка">
+                    </div>
+                    <h3>Доставка їжі</h3>
+                    <p>Наші шеф-кухарі готують ті ж вишукані страви, що й у ресторані, та доставляють їх прямо до ваших
+                        дверей.</p>
+                    <ul>
+                        <li>Доставка по місту</li>
+                        <li>Термінова доставка</li>
+                        <li>Замовлення онлайн</li>
+                        <li>Спеціальні пропозиції</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <img src="img/catering-icon.png" alt="Кейтеринг">
+                    </div>
+                    <h3>Кейтеринг</h3>
+                    <p>Організуємо незабутній гастрономічний досвід для ваших подій будь-якого масштабу — від
+                        корпоративів до весіль.</p>
+                    <ul>
+                        <li>Корпоративні заходи</li>
+                        <li>Весільні банкети</li>
+                        <li>Дні народження</li>
+                        <li>Конференції</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-forms">
+        <div class="container">
+            <div class="forms-intro">
+                <h2>Замовте послугу прямо зараз</h2>
+                <p>Заповніть одну з форм нижче, і наш менеджер зв'яжеться з вами найближчим часом для уточнення
+                    деталей</p>
+            </div>
+
+            <div class="forms-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-button active" data-tab="catering">Кейтеринг</button>
+                    <button class="tab-button" data-tab="delivery">Доставка</button>
+                    <button class="tab-button" data-tab="booking">Бронювання столика</button>
+                </div>
+
+                <div class="tab-content">
+                    <!-- Форма кейтерингу -->
+                    <div class="tab-pane active" id="catering">
+                        <form class="service-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="catering-name">Ім'я *</label>
+                                    <input type="text" id="catering-name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="catering-phone">Телефон *</label>
+                                    <input type="tel" id="catering-phone" name="phone" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="catering-email">Email</label>
+                                    <input type="email" id="catering-email" name="email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="catering-date">Дата події *</label>
+                                    <input type="date" id="catering-date" name="date" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="catering-type">Тип події *</label>
+                                <select id="catering-type" name="event_type" required>
+                                    <option value="">Оберіть тип події</option>
+                                    <option value="wedding">Весілля</option>
+                                    <option value="corporate">Корпоратив</option>
+                                    <option value="birthday">День народження</option>
+                                    <option value="conference">Конференція</option>
+                                    <option value="other">Інше</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="catering-guests">Кількість гостей *</label>
+                                <input type="number" id="catering-guests" name="guests" min="10" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="catering-location">Місце проведення</label>
+                                <input type="text" id="catering-location" name="location">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="catering-budget">Орієнтовний бюджет (грн)</label>
+                                <input type="number" id="catering-budget" name="budget" min="0">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="catering-message">Додаткові побажання</label>
+                                <textarea id="catering-message" name="message" rows="4"></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-button">Надіслати запит</button>
+                        </form>
+                    </div>
+
+                    <!-- Форма доставки -->
+                    <div class="tab-pane" id="delivery">
+                        <form class="service-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="delivery-name">Ім'я *</label>
+                                    <input type="text" id="delivery-name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="delivery-phone">Телефон *</label>
+                                    <input type="tel" id="delivery-phone" name="phone" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="delivery-address">Адреса доставки *</label>
+                                    <input type="text" id="delivery-address" name="address" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="delivery-date">Бажана дата доставки *</label>
+                                    <input type="datetime-local" id="delivery-date" name="date" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="delivery-order">Ваше замовлення *</label>
+                                <textarea id="delivery-order" name="order" rows="4"
+                                          placeholder="Опишіть, що ви хотіли б замовити..." required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="delivery-payment">Спосіб оплати</label>
+                                <select id="delivery-payment" name="payment">
+                                    <option value="cash">Готівка</option>
+                                    <option value="card">Картка онлайн</option>
+                                    <option value="terminal">Термінал при отриманні</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="delivery-notes">Додаткові примітки</label>
+                                <textarea id="delivery-notes" name="notes" rows="3"
+                                          placeholder="Додаткові побажання щодо замовлення..."></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-button">Замовити доставку</button>
+                        </form>
+                    </div>
+
+                    <!-- Форма бронювання -->
+                    <div class="tab-pane" id="booking">
+                        <form class="service-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="booking-name">Ім'я *</label>
+                                    <input type="text" id="booking-name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-phone">Телефон *</label>
+                                    <input type="tel" id="booking-phone" name="phone" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="booking-date">Дата *</label>
+                                    <input type="date" id="booking-date" name="date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-time">Час *</label>
+                                    <input type="time" id="booking-time" name="time" required>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="booking-guests">Кількість гостей *</label>
+                                    <select id="booking-guests" name="guests" required>
+                                        <option value="">Оберіть кількість</option>
+                                        <option value="1">1 особа</option>
+                                        <option value="2">2 особи</option>
+                                        <option value="3">3 особи</option>
+                                        <option value="4">4 особи</option>
+                                        <option value="5">5 осіб</option>
+                                        <option value="6">6 осіб</option>
+                                        <option value="7">7 осіб</option>
+                                        <option value="8">8+ осіб</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking-occasion">Привід</label>
+                                    <select id="booking-occasion" name="occasion">
+                                        <option value="">Оберіть привід</option>
+                                        <option value="romantic">Романтична вечеря</option>
+                                        <option value="business">Бізнес-ланч</option>
+                                        <option value="family">Сімейний обід</option>
+                                        <option value="celebration">Святкування</option>
+                                        <option value="other">Інше</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="booking-preferences">Особливі побажання</label>
+                                <textarea id="booking-preferences" name="preferences" rows="3"
+                                          placeholder="Побажання щодо розташування, особливі вимоги до харчування тощо..."></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-button">Забронювати столик</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-contact-info">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <h3>Графік роботи</h3>
+                    <p>Понеділок - Четвер: 11:00 - 23:00</p>
+                    <p>П'ятниця - Субота: 11:00 - 00:00</p>
+                    <p>Неділя: 12:00 - 22:00</p>
+                </div>
+
+                <div class="contact-item">
+                    <h3>Контакти</h3>
+                    <p><a href="tel:+380501234567">+38 (050) 123-45-67</a></p>
+                    <p><a href="mailto:info@gildedhour.com">info@gildedhour.com</a></p>
+                    <p>м. Львів, вул. Шпитальна 1 (ТЦ MAGNUS), 3 поверх</p>
+                </div>
+
+                <div class="contact-item">
+                    <h3>Зони доставки</h3>
+                    <p>Центр міста: 30-40 хв</p>
+                    <p>Селища: 45-60 хв</p>
+                    <p>Мінімальне замовлення: 300 грн</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+<footer>
+    <div class="footer-container">
+        <div class="social-media">
+            <a href="#" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="24" height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     class="lucide lucide-instagram">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
+                </svg>
+            </a>
+            <a href="#" target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="24" height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     class="lucide lucide-facebook">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/%D0%BA%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B0-%D0%BA%D0%BE%D1%81%D1%96%D0%BD%D0%BE%D0%B2%D0%B0-572275385/"
+               target="_blank">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="24" height="24"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     class="lucide lucide-linkedin">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+                    <rect width="4" height="12" x="2" y="9"/>
+                    <circle cx="4" cy="4" r="2"/>
+                </svg>
+            </a>
+        </div>
+
+        <div class="visa">
+            <img src="img/visa.png" alt="Visa" style="height: 60px;">
+            <img src="img/mastercard.png" alt="Mastercard">
+        </div>
+        <div class="contacts-footer">
+            <p>Email: <a href="mailto:info@gildedhour.com">info@gildedhour.com</a></p>
+            <p>Телефон: <a href="tel:+380501234567">+38 (050) 123-45-67</a></p>
+        </div>
+        <p class="rights">&copy; The Gilded Hour, all rights reserved 2025</p>
+    </div>
+</footer>
+<script src="services.js"></script>
