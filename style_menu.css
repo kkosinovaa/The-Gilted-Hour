@@ -464,28 +464,8 @@ main {
     padding: 40px 0;
 }
 
-.widget {
-    width: 100%;
-    border-radius: 10px;
-    background: rgba(248, 240, 227, 0.05);
-    padding: 25px;
-    /*    position: sticky;*/
-    /*    top: 120px;*/
-    /*    flex: 1;*/
-    /*    height: fit-content;*/
-}
 
-.widget p{
-    font-size: 24px;
-    font-weight: 600;
-    color: #f8f0e3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    border-bottom: 2px solid rgba(248, 240, 227, 0.2);
-    padding-bottom: 15px;
-}
+
 
 footer {
     background: #1a1a1a;

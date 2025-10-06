@@ -258,6 +258,7 @@ main {
     display: flex;
     margin-bottom: 30px;
     border-bottom: 1px solid rgba(248, 240, 227, 0.2);
+    gap: 5px;
 
 }
 
@@ -269,7 +270,7 @@ main {
     font-weight: 600;
     color: #f8f0e3;
     cursor: pointer;
-    transition: 1s;
+    transition: 0.5s;
     border-bottom: 3px solid transparent;
 }
 
@@ -280,7 +281,7 @@ main {
 
 .tab-button:hover {
     background: rgba(248, 240, 227, 0.1);
-    transition: 1s;
+    transition: 0.5s;
 }
 
 .tab-pane {

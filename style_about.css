@@ -92,8 +92,8 @@ header nav ul {
     height: 20px;
 }
 button:hover{
-    transform: scale(1.05);
-    transition: 2s;
+    transform: scale(1.005);
+    transition: 0.3s;
 }
 
 main {
@@ -209,12 +209,12 @@ main {
     object-fit: cover;
     border-radius: 10px;
     /*box-shadow: 1px 1px 15px 0 rgba(255, 240, 240, 0.2);*/
-    transition: 2s;
+    transition: 0.5s;
 }
 
 .cuisine-image img:hover {
-    transform: scale(1.05);
-    transition: 2s;
+    transform: scale(1.005);
+    transition: 0.3s;
     box-shadow: 1px 1px 15px 0 rgba(255, 240, 240, 0.3);
 }
 
@@ -268,171 +268,7 @@ main {
 .video:hover {
     box-shadow: 1px 1px 35px 0 rgba(255, 240, 240, 0.2);
     border-color: rgba(248, 240, 227, 0.3);
-    transform: scale(1.01);
-}
-
-/* Team Section */
-.section-team {
-    padding: 80px 0;
-}
-
-.section-team h2 {
-    font-size: 46px;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 50px;
-    color: #f8f0e3;
-}
-
-.team-grid {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.team-member {
-    text-align: center;
-    padding: 30px;
-    width: 370px;
-    min-height: 450px;
-    border-radius: 10px;
-    background: rgba(248, 240, 227, 0.05);
-    transition: 2s;
-}
-
-.team-member:hover {
-    transform: translateY(-10px);
-    transition: 1s;
-    box-shadow: 1px 1px 15px 0 rgba(255, 240, 240, 0.2);
-}
-
-.member-photo {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto 20px;
-}
-
-.member-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.team-member h3 {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #f8f0e3;
-}
-
-.team-member p {
-    font-size: 22px;
-    margin-bottom: 5px;
-    color: #f8f0e3;
-}
-.divider {
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #f8f0e3, transparent);
-    margin: 30px 0;
-}
-
-
-
-/* Developer Section */
-.section-developer {
-    padding: 80px 0;
-    background: rgba(248, 240, 227, 0.05);
-}
-
-.section-developer h2 {
-    font-size: 46px;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 50px;
-    color: #f8f0e3;
-}
-
-.developer-content {
-    display: flex;
-    align-items: center;
-    gap: 50px;
-}
-
-.developer-photo {
-    flex: 1;
-    text-align: center;
-}
-
-.developer-photo img {
-    width: 400px;
-    height: 450px;
-    border-radius: 10%;
-    object-fit: cover;
-    box-shadow: 1px 1px 15px 0 rgba(255, 240, 240, 0.07);
-}
-
-.developer-info {
-    flex: 2;
-}
-
-.developer-info h3 {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 10px;
-    color: #f8f0e3;
-}
-
-.developer-info p {
-    font-size: 23px;
-    line-height: 1.6;
-    margin-bottom: 20px;
-    color: #f8f0e3;
-}
-
-.developer-skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.developer-skills span {
-    background: #f8f0e3;
-    color: #1a1a1a;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 16px;
-    font-weight: 600;
-}
-.developer-contact ul{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    list-style-type: square;
-    padding-left: 20px;
-    color: #f8f0e3;
-}
-.developer-contact .email{
-    font-size:19px;
-}
-.developer-contact a:hover{
-    text-decoration: underline;
-    color: #ffebca;
-}
-.developer-contact p {
-    font-weight: 600;
-    margin-bottom: 5px;
-    color: #f8f0e3;
-}
-
-.developer-contact a {
-    color: #f8f0e3;
-    font-size:19px;
+    transform: scale(1.005);
 }
 
 footer {
