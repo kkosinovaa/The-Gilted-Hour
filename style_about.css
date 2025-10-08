@@ -116,6 +116,7 @@ main {
     align-items: center;
     justify-content: center;
     text-align: center;
+    position: relative;
 }
 
 .hero-content h1 {
@@ -344,3 +345,185 @@ footer .contacts-footer a:hover {
 footer .contacts-footer p {
     margin: 0;
 }
+@media(max-width: 480px){
+    .container,
+    header .header-content,
+    .footer-container {
+        width: 100%;
+        max-width: 100%;
+    }
+    header .header-content {
+        width: 100%;
+        padding: 0 20px
+    }
+
+    .logo h2 {
+        font-size: 18px;
+        margin-top: 7.5px;
+        width: 40px
+    }
+
+    .logo p {
+        width: 24px;
+        height: 14px;
+        font-size: 9px;
+        margin-top: 7.5px;
+    }
+
+    header nav {
+        gap: 25px;
+    }
+
+    header nav ul {
+        gap: 25px;
+        color: #f8f0e3;
+        font-size: 10px;
+        margin-top: 16px;
+    }
+
+    .button-contacts {
+        padding: 5px 8.5px;
+        gap: 5px;
+        border-radius: 2px;
+        font-size: 9px;
+    }
+
+    .button-contacts img {
+        width: 10px;
+        height: 10px;
+    }
+
+    .footer-container {
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .footer-top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    .social-media {
+        display: flex;
+        gap: 15px;
+    }
+
+    .social-media svg {
+        width: 24px;
+        height: 24px;
+        color: #f8f0e3;
+    }
+
+    .visa {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .visa img {
+        height: 22px;
+    }
+    .contacts-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        font-size: 13px;
+    }
+
+    .contacts-footer a {
+        color: #f8f0e3;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .rights {
+        font-size: 11px;
+        opacity: 0.7;
+        margin-top: 3px;
+    }
+    /*------------------------------*/
+    .section-hero {
+        height: 200px;
+        top: -40px;
+    }
+
+    .hero-content h1 {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+        max-width: 400px;
+    }
+/*    ---------------------------------------*/
+    .cuisine-item {
+        flex-direction: row;
+        gap: 15px;
+    }
+    .about-content{
+        flex-direction: column-reverse;
+        gap: 20px;
+    }
+    .about-text{
+        text-align: center;
+    }
+    .about-image img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+
+    .cuisine-item.reverse {
+        flex-direction: row-reverse;
+    }
+
+    .about-text h2,
+    .section-cuisine h2,
+    .processing h2 {
+        font-size: 22px;
+        margin-bottom: 15px;
+    }
+
+    .about-text p,
+    .cuisine-text p {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .cuisine-text h3 {
+        font-size: 18px;
+    }
+    .cuisine-image img {
+        height: 150px;
+        border-radius: 6px;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    .section-about-rest,
+    .section-cuisine,
+    .section-cooking-process {
+        padding: 10px 0;
+    }
+    .video {
+        height: 180px;
+        max-width: 100%;
+    }
+    .cuisine-item {
+        margin-bottom: 20px;
+    }
+}
+
