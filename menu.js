@@ -33,18 +33,22 @@ class MenuCart {
                 this.checkout();
             }
         });
+
+        // Відкриття мобільного кошика
+        const openCartBtn = document.querySelector('.open-cart-btn');
+        if (openCartBtn) {
+            openCartBtn.addEventListener('click', () => {
+                this.updateCartDisplay(); // Оновлюємо перед відкриттям
+            });
+        }
     }
 
     setupCategoryFilter() {
         const categoryBtns = document.querySelectorAll('.category-btn');
-
         categoryBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Видаляємо активний клас з усіх кнопок
                 categoryBtns.forEach(b => b.classList.remove('active'));
-                // Додаємо активний клас до поточної кнопки
                 btn.classList.add('active');
-
                 const category = btn.dataset.category;
                 this.filterMenu(category);
             });
@@ -53,7 +57,6 @@ class MenuCart {
 
     filterMenu(category) {
         const sections = document.querySelectorAll('.menu-category-section');
-
         sections.forEach(section => {
             if (category === 'all' || section.dataset.category === category) {
                 section.style.display = 'block';
@@ -137,36 +140,44 @@ class MenuCart {
     }
 
     updateCartDisplay() {
-        const cartItemsContainer = document.querySelector('.cart-items');
+        // Оновлюємо всі контейнери кошика
+        const cartContainers = document.querySelectorAll('.cart-items');
         const cartCount = document.querySelector('.cart-count');
-        const totalPrice = document.querySelector('.total-price');
+        const totalPriceElements = document.querySelectorAll('.total-price');
 
         // Оновлюємо кількість товарів
         const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0);
-        cartCount.textContent = totalItems;
-
-        // Оновлюємо список товарів
-        if (this.cart.length === 0) {
-            cartItemsContainer.innerHTML = '<div class="empty-cart">Кошик порожній</div>';
-        } else {
-            cartItemsContainer.innerHTML = this.cart.map(item => `
-                <div class="cart-item" data-id="${item.id}">
-                    <div class="cart-item-info">
-                        <h4>${item.name}</h4>
-                        <div class="cart-item-price">${item.price} грн</div>
-                    </div>
-                    <div class="cart-item-controls">
-                        <button class="quantity-btn">-</button>
-                        <span class="cart-item-quantity">${item.quantity}</span>
-                        <button class="quantity-btn">+</button>
-                        <button class="remove-item-btn">×</button>
-                    </div>
-                </div>
-            `).join('');
+        if (cartCount) {
+            cartCount.textContent = totalItems;
         }
 
-        // Оновлюємо загальну суму
-        totalPrice.textContent = `${this.calculateTotal()} грн`;
+        // Оновлюємо всі списки товарів
+        cartContainers.forEach(container => {
+            if (this.cart.length === 0) {
+                container.innerHTML = '<div class="empty-cart">Кошик порожній</div>';
+            } else {
+                container.innerHTML = this.cart.map(item => `
+                    <div class="cart-item" data-id="${item.id}">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <div class="cart-item-price">${item.price} грн</div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="quantity-btn">-</button>
+                            <span class="cart-item-quantity">${item.quantity}</span>
+                            <button class="quantity-btn">+</button>
+                            <button class="remove-item-btn">×</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        });
+
+        // Оновлюємо всі елементи з загальною сумою
+        const total = this.calculateTotal();
+        totalPriceElements.forEach(element => {
+            element.textContent = `${total} грн`;
+        });
     }
 
     calculateTotal() {
@@ -182,7 +193,6 @@ class MenuCart {
     }
 
     showNotification(message) {
-        // Створюємо сповіщення
         const notification = document.createElement('div');
         notification.style.cssText = `
             position: fixed;
@@ -201,12 +211,10 @@ class MenuCart {
 
         document.body.appendChild(notification);
 
-        // Показуємо сповіщення
         setTimeout(() => {
             notification.style.transform = 'translateX(0)';
         }, 100);
 
-        // Ховаємо сповіщення через 3 секунди
         setTimeout(() => {
             notification.style.transform = 'translateX(100%)';
             setTimeout(() => {

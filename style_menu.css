@@ -464,8 +464,28 @@ main {
     padding: 40px 0;
 }
 
+.widget {
+    width: 100%;
+    border-radius: 10px;
+    background: rgba(248, 240, 227, 0.05);
+    padding: 25px;
+    /*    position: sticky;*/
+    /*    top: 120px;*/
+    /*    flex: 1;*/
+    /*    height: fit-content;*/
+}
 
-
+.widget p{
+    font-size: 24px;
+    font-weight: 600;
+    color: #f8f0e3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(248, 240, 227, 0.2);
+    padding-bottom: 15px;
+}
 
 footer {
     background: #1a1a1a;
@@ -538,4 +558,222 @@ footer .contacts-footer a:hover {
 
 footer .contacts-footer p {
     margin: 0;
+}
+@media (max-width: 480px) {
+    .container,
+    header .header-content,
+    .footer-container {
+        width: 100%;
+        max-width: 100%;
+    }
+    header .header-content {
+        width: 100%;
+        padding: 0 20px
+    }
+
+    .logo h2 {
+        font-size: 18px;
+        margin-top: 7.5px;
+        width: 40px
+    }
+
+    .logo p {
+        width: 24px;
+        height: 14px;
+        font-size: 9px;
+        margin-top: 7.5px;
+    }
+
+    header nav {
+        gap: 25px;
+    }
+
+    header nav ul {
+        gap: 25px;
+        color: #f8f0e3;
+        font-size: 10px;
+        margin-top: 16px;
+    }
+
+    .button-contacts {
+        padding: 5px 8.5px;
+        gap: 5px;
+        border-radius: 2px;
+        font-size: 9px;
+    }
+
+    .button-contacts img {
+        width: 10px;
+        height: 10px;
+    }
+
+    .footer-container {
+        width: 100%;
+        max-width: 480px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+    }
+    .footer-top {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    .social-media {
+        display: flex;
+        gap: 15px;
+    }
+
+    .social-media svg {
+        width: 24px;
+        height: 24px;
+        color: #f8f0e3;
+    }
+
+    .visa {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .visa img {
+        height: 22px;
+    }
+    .contacts-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        font-size: 13px;
+    }
+
+    .contacts-footer a {
+        color: #f8f0e3;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .rights {
+        font-size: 11px;
+        opacity: 0.7;
+        margin-top: 3px;
+    }
+
+/*    ----------------------------------------------*/
+    .section-hero {
+        height: 200px;
+        top: -40px;
+    }
+
+    .hero-content h1 {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .hero-content p {
+        font-size: 14px;
+        max-width: 400px;
+    }
+    .menu-container{
+        padding: 20px 0;
+    }
+    .menu-categories {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 10px;
+        padding: 10px 5px;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        margin-bottom: 20px;
+    }
+    .menu-categories::-webkit-scrollbar {
+        display: none;
+    }
+
+    .category-btn {
+        flex: 0 0 auto;
+        font-size: 14px;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-weight: 500;
+    }
+
+    .menu-content {
+        overflow: hidden;
+    }
+
+    .category-title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+/*    -------------------------------------*/
+    .sidebar {
+        display: none !important;
+    }
+
+    /* Кнопка кошика (спливаюча) */
+    .open-cart-btn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1050;
+        background: #f8f0e3;
+        color: #1a1a1a;
+        font-weight: 600;
+        border-radius: 30px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        padding: 10px 18px;
+        font-size: 16px;
+    }
+
+    .open-cart-btn:hover {
+        background: #e8e0d3;
+    }
+    .offcanvas {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100%;
+        transition: right 0.3s ease;
+        background: rgba(26, 26, 26, 0.98);
+        z-index: 1100;
+        padding: 20px;
+        overflow-y: auto;
+    }
+
+    /* Клас відкритого кошика */
+    .offcanvas.show {
+        right: 0;
+    }
+
+    .offcanvas .cart-items {
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+
+    .offcanvas .total-line span {
+        color: #f8f0e3;
+    }
+
+    .offcanvas .checkout-btn,
+    .offcanvas .clear-cart-btn {
+        font-size: 15px;
+        font-weight: 600;
+    }
+    .category-title{
+        text-align: center;
+    }
+    .menu-item{
+        margin: 0 10px;
+    }
 }
