@@ -25,11 +25,13 @@ header {
 
 header .header-content {
     height: 100%;
-    width: 1250px;
+    width: 100%;
+    max-width: 1250px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 20px;
 }
 
 .logo {
@@ -108,10 +110,12 @@ main {
 }
 
 .container {
-    width: 1250px;
+    width: 100%;
+    max-width: 1250px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 20px;
 }
+
 /* Contact Hero Section */
 .contact-hero {
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/contacts_section.jpg');
@@ -326,11 +330,13 @@ footer {
 }
 
 .footer-container {
-    width: 1250px;
+    width: 100%;
+    max-width: 1250px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
 }
 
 footer .social-media {
@@ -391,3 +397,248 @@ footer .contacts-footer a:hover {
 footer .contacts-footer p {
     margin: 0;
 }
+
+/* Mobile Responsive - 480px */
+@media (max-width: 480px) {
+    /* Header */
+    header {
+        height: 60px;
+    }
+
+    main {
+        padding-top: 60px;
+    }
+
+    header .header-content {
+        padding: 0 15px;
+    }
+
+    .logo h2 {
+        font-size: 20px;
+        margin-top: 8px;
+    }
+
+    .logo p {
+        font-size: 10px;
+        width: 25px;
+        height: 15px;
+        margin-top: 8px;
+    }
+
+    header nav {
+        gap: 15px;
+    }
+
+    header nav ul {
+        gap: 12px;
+        font-size: 11px;
+    }
+
+    .button-contacts {
+        padding: 5px 8px;
+        font-size: 10px;
+        gap: 4px;
+        border-radius: 2px;
+    }
+
+    .button-contacts img {
+        width: 10px;
+        height: 10px;
+    }
+
+    /* Container */
+    .container {
+        padding: 0 15px;
+    }
+
+    /* Hero Section */
+    .contact-hero {
+        padding: 50px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    /* Contact Sections */
+    .contact-sections {
+        padding: 40px 0;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .section-header {
+        margin-bottom: 25px;
+    }
+
+    .section-header h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .divider {
+        width: 80px;
+    }
+
+    /* Contact Cards */
+    .contact-cards {
+        gap: 15px;
+    }
+
+    .contact-card {
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .card-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .card-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .card-content h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .card-content p {
+        font-size: 14px;
+    }
+
+    /* Hours Section */
+    .hours-content {
+        padding: 25px 20px;
+        border-radius: 8px;
+    }
+
+    .hours-list {
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .hours-item {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+        padding: 12px 0;
+    }
+
+    .days {
+        font-size: 16px;
+    }
+
+    .time {
+        font-size: 15px;
+        padding: 6px 12px;
+    }
+
+    .reservation-info {
+        padding: 20px 15px;
+        border-left-width: 3px;
+    }
+
+    .reservation-info h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .reservation-info p {
+        font-size: 14px;
+        margin-bottom: 4px;
+    }
+
+    .reservation-note {
+        font-size: 13px;
+        margin-top: 8px;
+    }
+
+    /* Map Section */
+    .map-section {
+        padding: 40px 0;
+    }
+
+    .map-container {
+        height: 250px;
+        border-radius: 8px;
+    }
+
+    /* Footer */
+    footer {
+        padding: 30px 0 15px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 0 15px;
+    }
+
+    footer .contacts-footer {
+        order: -1;
+        gap: 3px;
+    }
+
+    footer .contacts-footer a {
+        font-size: 14px;
+    }
+
+    footer .contacts-footer p {
+        font-size: 14px;
+    }
+
+    .footer-top {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    footer .social-media {
+        gap: 20px;
+    }
+
+    footer .social-media svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    footer .visa {
+        gap: 10px;
+    }
+
+    footer .visa img {
+        height: 22px;
+    }
+
+    footer .rights {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    /* Hover effects for mobile */
+    .contact-card:hover {
+        transform: none;
+        box-shadow: 1px 1px 15px 0 rgba(255, 240, 240, 0.1);
+    }
+
+    button:hover {
+        transform: none;
+    }
+}
+
