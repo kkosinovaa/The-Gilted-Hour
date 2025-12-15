@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Створити акаунт - The Gilded Hour</title>
+    <link rel="stylesheet" href="styles/style-create-account.css">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+
+</head>
+<body>
+
+<main class="container">
+
+    <div class="card">
+        <h2>Створити акаунт</h2>
+
+        <form id="register-form" action="#" method="POST">
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="input-group">
+                <label for="address">Адреса для доставки</label>
+                <input type="text" id="address" name="address">
+            </div>
+
+            <button type="submit" class="header-button login-submit-button">
+                Створити акаунт
+            </button>
+
+        </form>
+
+        <div class="login-links">
+            <p>Маєте акаунт?  <a href="login.html">Увійти</a></p>
+        </div>
+    </div>
+
+</main>
+<script>
+    document.getElementById("register-form").addEventListener("submit", async function(e) {
+        e.preventDefault();
+
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const address = document.getElementById("address").value.trim();
+
+        if (!email || !password) {
+            alert("Заповніть всі поля!");
+            return;
+        }
+
+        try {
+            const res = await fetch("http://localhost:3000/auth/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password, address })
+            });
+
+            const data = await res.json();
+            alert(data.message || "Акаунт успішно створено!");
+            window.location.href = "login.html";
+
+        } catch (error) {
+            console.error("Error:", error);
+            alert("Помилка реєстрації!");
+        }
+    });
+</script>
+
+
+</body>
+</html>

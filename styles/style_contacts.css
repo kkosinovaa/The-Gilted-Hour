@@ -25,13 +25,11 @@ header {
 
 header .header-content {
     height: 100%;
-    width: 100%;
-    max-width: 1250px;
+    width: 80%;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
 }
 
 .logo {
@@ -79,7 +77,7 @@ header nav ul {
     text-transform: capitalize;
 }
 
-.button-contacts{
+.button-contacts {
     display: flex;
     padding: 10px 17px;
     align-items: flex-start;
@@ -96,13 +94,103 @@ header nav ul {
     text-transform: capitalize;
     transition: 1s;
 }
-.button-contacts img{
+
+.button-contacts img {
     width: 20px;
     height: 20px;
 }
-button:hover{
+
+button:hover {
     transform: scale(1.05);
     transition: 2s;
+}
+
+/* Стилі для бургер-меню */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.burger-line {
+    width: 25px;
+    height: 3px;
+    background: #f8f0e3;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Мобільна навігація */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 86px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 86px);
+    background: #1a1a1a;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 50px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 9;
+}
+
+.mobile-nav.active {
+    transform: translateX(0);
+}
+
+.mobile-nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.mobile-nav ul li {
+    width: 80%;
+    text-align: center;
+}
+
+.mobile-nav ul li a {
+    color: #f8f0e3;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    text-decoration: none;
+    display: block;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(248, 240, 227, 0.2);
+    transition: color 0.3s;
+}
+
+.mobile-nav ul li a:hover {
+    color: #d4c4a8;
+}
+
+.mobile-nav .button-contacts {
+    margin-top: 40px;
+    font-size: 20px;
+    padding: 15px 25px;
+}
+
+/* Анімація бургер-іконки */
+.burger-menu.active .burger-line:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger-menu.active .burger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active .burger-line:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 main {
@@ -118,7 +206,7 @@ main {
 
 /* Contact Hero Section */
 .contact-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/contacts_section.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/contacts_section.jpg');
     background-size: cover;
     background-position: center;
     padding: 100px 0;
@@ -400,50 +488,23 @@ footer .contacts-footer p {
 
 /* Mobile Responsive - 480px */
 @media (max-width: 480px) {
-    /* Header */
     header {
-        height: 60px;
+        height: 70px;
     }
 
-    main {
-        padding-top: 60px;
-    }
-
-    header .header-content {
-        padding: 0 15px;
+    .mobile-nav {
+        top: 70px;
+        height: calc(100vh - 70px);
     }
 
     .logo h2 {
-        font-size: 20px;
-        margin-top: 8px;
+        font-size: 24px;
+        margin-top: 10px;
     }
 
     .logo p {
-        font-size: 10px;
-        width: 25px;
-        height: 15px;
-        margin-top: 8px;
-    }
-
-    header nav {
-        gap: 15px;
-    }
-
-    header nav ul {
-        gap: 12px;
-        font-size: 11px;
-    }
-
-    .button-contacts {
-        padding: 5px 8px;
-        font-size: 10px;
-        gap: 4px;
-        border-radius: 2px;
-    }
-
-    .button-contacts img {
-        width: 10px;
-        height: 10px;
+        font-size: 14px;
+        margin-top: 10px;
     }
 
     /* Container */
@@ -642,3 +703,22 @@ footer .contacts-footer p {
     }
 }
 
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    .mobile-nav {
+        display: flex;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-nav {
+        display: none !important;
+    }
+}

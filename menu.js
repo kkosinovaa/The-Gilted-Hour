@@ -6,23 +6,23 @@ class MenuCart {
 
     init() {
         this.bindEvents();
-        this.updateCartDisplay();
+        this.updateAllCarts();
         this.setupCategoryFilter();
+        this.setupMobileCart();
     }
 
     bindEvents() {
-        // Додавання до кошика
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('add-to-cart-btn')) {
                 this.addToCart(e.target.closest('.menu-item'));
             }
 
             if (e.target.classList.contains('quantity-btn')) {
-                this.updateQuantity(e.target);
+                this.handleQuantityChange(e.target);
             }
 
             if (e.target.classList.contains('remove-item-btn')) {
-                this.removeFromCart(e.target.closest('.cart-item'));
+                this.removeFromCart(e.target);
             }
 
             if (e.target.classList.contains('clear-cart-btn')) {
@@ -32,13 +32,37 @@ class MenuCart {
             if (e.target.classList.contains('checkout-btn')) {
                 this.checkout();
             }
+
+            if (e.target.classList.contains('mobile-checkout-btn')) {
+                this.checkout();
+            }
+
+            if (e.target.classList.contains('mobile-clear-cart-btn')) {
+                this.clearCart();
+            }
         });
 
-        // Відкриття мобільного кошика
-        const openCartBtn = document.querySelector('.open-cart-btn');
-        if (openCartBtn) {
-            openCartBtn.addEventListener('click', () => {
-                this.updateCartDisplay(); // Оновлюємо перед відкриттям
+        const mobileCartBtn = document.getElementById('mobileCartBtn');
+        const closeCartBtn = document.getElementById('closeCartBtn');
+        const mobileCartModal = document.getElementById('mobileCartModal');
+
+        if (mobileCartBtn) {
+            mobileCartBtn.addEventListener('click', () => {
+                this.openMobileCart();
+            });
+        }
+
+        if (closeCartBtn) {
+            closeCartBtn.addEventListener('click', () => {
+                this.closeMobileCart();
+            });
+        }
+
+        if (mobileCartModal) {
+            mobileCartModal.addEventListener('click', (e) => {
+                if (e.target === mobileCartModal) {
+                    this.closeMobileCart();
+                }
             });
         }
     }
@@ -53,6 +77,10 @@ class MenuCart {
                 this.filterMenu(category);
             });
         });
+    }
+
+    setupMobileCart() {
+        this.updateMobileCartBadge();
     }
 
     filterMenu(category) {
@@ -87,97 +115,167 @@ class MenuCart {
         }
 
         this.saveCart();
-        this.updateCartDisplay();
+        this.updateAllCarts();
         this.showNotification(`${itemName} додано до кошика`);
     }
 
-    removeFromCart(cartItem) {
+    removeFromCart(removeBtn) {
+        const cartItem = removeBtn.closest('.cart-item');
         const itemId = cartItem.dataset.id;
         this.cart = this.cart.filter(item => item.id !== itemId);
         this.saveCart();
-        this.updateCartDisplay();
+        this.updateAllCarts();
     }
 
-    updateQuantity(button) {
+    handleQuantityChange(button) {
         const cartItem = button.closest('.cart-item');
         const itemId = cartItem.dataset.id;
-        const quantityElement = cartItem.querySelector('.cart-item-quantity');
         const item = this.cart.find(item => item.id === itemId);
 
-        if (button.textContent === '+') {
+        if (!item) return;
+
+        if (button.classList.contains('plus')) {
             item.quantity += 1;
-        } else if (button.textContent === '-' && item.quantity > 1) {
+        } else if (button.classList.contains('minus') && item.quantity > 1) {
             item.quantity -= 1;
         }
 
         this.saveCart();
-        this.updateCartDisplay();
+        this.updateAllCarts();
     }
 
     clearCart() {
         if (this.cart.length === 0) return;
 
-        if (confirm('Ви впевнені, що хочете очистити кошик?')) {
-            this.cart = [];
-            this.saveCart();
-            this.updateCartDisplay();
-            this.showNotification('Кошик очищено');
-        }
+        this.cart = [];
+        this.saveCart();
+        this.updateAllCarts();
+        this.showNotification('Кошик очищено');
     }
 
     checkout() {
-        if (this.cart.length === 0) {
-            alert('Кошик порожній! Додайте товари перед оформленням замовлення.');
+        const user_id = localStorage.getItem("user_id");
+        if (!user_id) {
+            this.showNotification("Спочатку увійдіть у свій акаунт!");
             return;
         }
 
-        const total = this.calculateTotal();
-        alert(`Дякуємо за замовлення!\n\nСума: ${total} грн\n\nВаше замовлення передано на обробку. Очікуйте дзвінка від нашого менеджера.`);
-
-        this.cart = [];
-        this.saveCart();
-        this.updateCartDisplay();
+        fetch("http://localhost:3000/orders", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                user_id,
+                cart: this.cart,
+                total_price: this.calculateTotal()
+            })
+        })
+            .then(res => res.json())
+            .then(() => {
+                this.showNotification("Замовлення успішно збережено! 🛵");
+                this.cart = [];
+                this.saveCart();
+                this.updateAllCarts();
+                this.closeMobileCart();
+            })
+            .catch(() => {
+                this.showNotification("⚠ Помилка при оформленні замовлення. Спробуйте пізніше.");
+            });
     }
 
-    updateCartDisplay() {
-        // Оновлюємо всі контейнери кошика
-        const cartContainers = document.querySelectorAll('.cart-items');
+    updateAllCarts() {
+        this.updateDesktopCart();
+        this.updateMobileCart();
+        this.updateMobileCartBadge();
+    }
+
+    updateDesktopCart() {
+        const cartItems = document.querySelector('.cart-items');
         const cartCount = document.querySelector('.cart-count');
-        const totalPriceElements = document.querySelectorAll('.total-price');
+        const totalPrice = document.querySelector('.total-price');
 
-        // Оновлюємо кількість товарів
-        const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0);
-        if (cartCount) {
-            cartCount.textContent = totalItems;
-        }
-
-        // Оновлюємо всі списки товарів
-        cartContainers.forEach(container => {
+        if (cartItems) {
             if (this.cart.length === 0) {
-                container.innerHTML = '<div class="empty-cart">Кошик порожній</div>';
+                cartItems.innerHTML = '<div class="empty-cart">Кошик порожній</div>';
             } else {
-                container.innerHTML = this.cart.map(item => `
+                cartItems.innerHTML = this.cart.map(item => `
                     <div class="cart-item" data-id="${item.id}">
                         <div class="cart-item-info">
                             <h4>${item.name}</h4>
                             <div class="cart-item-price">${item.price} грн</div>
                         </div>
                         <div class="cart-item-controls">
-                            <button class="quantity-btn">-</button>
+                            <button class="quantity-btn minus">-</button>
                             <span class="cart-item-quantity">${item.quantity}</span>
-                            <button class="quantity-btn">+</button>
+                            <button class="quantity-btn plus">+</button>
                             <button class="remove-item-btn">×</button>
                         </div>
                     </div>
                 `).join('');
             }
-        });
+        }
 
-        // Оновлюємо всі елементи з загальною сумою
-        const total = this.calculateTotal();
-        totalPriceElements.forEach(element => {
-            element.textContent = `${total} грн`;
-        });
+        if (cartCount) {
+            cartCount.textContent = this.cart.reduce((sum, item) => sum + item.quantity, 0);
+        }
+
+        if (totalPrice) {
+            totalPrice.textContent = `${this.calculateTotal()} грн`;
+        }
+    }
+
+    updateMobileCart() {
+        const mobileCartItems = document.getElementById('mobileCartItems');
+        const mobileTotalPrice = document.querySelector('.mobile-total-price');
+
+        if (mobileCartItems) {
+            if (this.cart.length === 0) {
+                mobileCartItems.innerHTML = '<div class="empty-cart">Кошик порожній</div>';
+            } else {
+                mobileCartItems.innerHTML = this.cart.map(item => `
+                    <div class="cart-item" data-id="${item.id}">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <div class="cart-item-price">${item.price} грн</div>
+                        </div>
+                        <div class="cart-item-controls">
+                            <button class="quantity-btn minus">-</button>
+                            <span class="cart-item-quantity">${item.quantity}</span>
+                            <button class="quantity-btn plus">+</button>
+                            <button class="remove-item-btn">×</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+
+        if (mobileTotalPrice) {
+            mobileTotalPrice.textContent = `${this.calculateTotal()} грн`;
+        }
+    }
+
+    updateMobileCartBadge() {
+        const mobileCartBadge = document.getElementById('mobileCartBadge');
+        if (mobileCartBadge) {
+            const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0);
+            mobileCartBadge.textContent = totalItems;
+            mobileCartBadge.style.display = totalItems > 0 ? 'flex' : 'none';
+        }
+    }
+
+    openMobileCart() {
+        const mobileCartModal = document.getElementById('mobileCartModal');
+        if (mobileCartModal) {
+            mobileCartModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    closeMobileCart() {
+        const mobileCartModal = document.getElementById('mobileCartModal');
+        if (mobileCartModal) {
+            mobileCartModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     }
 
     calculateTotal() {
@@ -193,34 +291,20 @@ class MenuCart {
     }
 
     showNotification(message) {
-        const notification = document.createElement('div');
-        notification.style.cssText = `
-            position: fixed;
-            top: 100px;
-            right: 20px;
-            background: #f8f0e3;
-            color: #1a1a1a;
-            padding: 15px 20px;
-            border-radius: 5px;
-            font-weight: 600;
-            z-index: 1000;
-            transform: translateX(100%);
-            transition: transform 0.3s ease;
-        `;
-        notification.textContent = message;
+        let notificationBox = document.querySelector(".notification-box");
 
-        document.body.appendChild(notification);
+        if (!notificationBox) {
+            notificationBox = document.createElement("div");
+            notificationBox.className = "notification-box";
+            document.body.appendChild(notificationBox);
+        }
+
+        notificationBox.textContent = message;
+        notificationBox.classList.add("show");
 
         setTimeout(() => {
-            notification.style.transform = 'translateX(0)';
-        }, 100);
-
-        setTimeout(() => {
-            notification.style.transform = 'translateX(100%)';
-            setTimeout(() => {
-                document.body.removeChild(notification);
-            }, 300);
-        }, 3000);
+            notificationBox.classList.remove("show");
+        }, 4000);
     }
 }
 

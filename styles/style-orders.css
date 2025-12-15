@@ -1,0 +1,131 @@
+/* Імпорт основного шрифту, якщо він не підтягнувся з reset/інших файлів */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+
+body {
+    background: #1a1a1a;
+    color: #f8f0e3;
+    font-family: "Cormorant Garamond", serif;
+}
+
+main {
+    min-height: 80vh;
+    padding-top: 86px; /* Відступ під фіксований хедер */
+}
+
+.orders-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/restaurant-interior.jpg'); /* Або інше фото */
+    background-size: cover;
+    background-position: center;
+    padding: 60px 0;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.orders-hero h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+    color: #f8f0e3;
+}
+
+.orders-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+}
+
+/* Список замовлень */
+.orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.order-card {
+    background: rgba(248, 240, 227, 0.05);
+    border: 1px solid rgba(248, 240, 227, 0.2);
+    border-radius: 10px;
+    padding: 25px;
+    transition: transform 0.3s ease;
+}
+
+.order-card:hover {
+    transform: translateY(-5px);
+    background: rgba(248, 240, 227, 0.08);
+}
+
+.order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(248, 240, 227, 0.1);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.order-header h3 {
+    font-size: 24px;
+    color: #f8f0e3;
+}
+
+.order-date {
+    color: #d4c9b8;
+    font-size: 16px;
+}
+
+.order-body {
+    margin-bottom: 20px;
+}
+
+.order-item-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 18px;
+    color: #d4c9b8;
+}
+
+.order-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid rgba(248, 240, 227, 0.1);
+}
+
+.total-price {
+    font-size: 22px;
+    font-weight: 700;
+    color: #f8f0e3;
+}
+
+.status {
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.status.completed {
+    background: rgba(76, 175, 80, 0.2);
+    color: #81c784;
+    border: 1px solid #81c784;
+}
+
+.empty-orders {
+    text-align: center;
+    font-size: 24px;
+    padding: 50px;
+    color: #d4c9b8;
+}
+
+.empty-orders a {
+    color: #f8f0e3;
+    text-decoration: underline;
+}
+
+.loading, .error {
+    text-align: center;
+    font-size: 20px;
+    color: #d4c9b8;
+}

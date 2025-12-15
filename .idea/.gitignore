@@ -1,3 +1,21 @@
 modules.xml
 The Gilded hour.iml
 workspace.xml
+# Залежності Node.js (вони скачаються через npm install)
+node_modules/
+backend/node_modules/
+
+# Налаштування редакторів коду
+.idea/
+.vscode/
+
+# Системні файли
+.DS_Store
+Thumbs.db
+
+# Дані бази даних (ніколи не комітити!)
+backend/mysql_data/
+
+# Логи (якщо є)
+*.log
+npm-debug.log

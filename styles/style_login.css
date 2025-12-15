@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+
+* {
+    font-family: "Cormorant Garamond", serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background: #1a1a1a;
+    color: #f8f0e3;
+    margin: 0;
+    padding: 0;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 450px;
+    padding: 40px 30px;
+    background: #2a2a2a;
+    box-shadow: 4px 6px 13px 0 rgba(234, 234, 234, 0.25);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+
+.login-card h2 {
+    color: #f8f0e3;
+    font-size: 32px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #f8f0e3;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 4px;
+    background: #1a1a1a;
+    color: #f8f0e3;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.input-group input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #f8f0e3;
+}
+
+.login-submit-button {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+    font-size: 20px;
+    margin-top: 10px;
+    background-color: #f8f0e3;
+    border-radius: 4px;
+}
+
+.login-links {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.login-links a {
+    color: #f8f0e3;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.login-links a:hover {
+    text-decoration: underline;
+}
+

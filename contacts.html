@@ -1,44 +1,75 @@
 <!doctype html>
 <html lang="uk">
 <head>
+    <!-- Мета-інформація та кодування -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакти - The Gilded Hour</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style_contacts.css">
+
+    <!-- Підключення стилів -->
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style_contacts.css">
+
+    <!-- Фавіконки -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
 </head>
 <body>
-<!--HEADER-->
+<!-- HEADER -->
 <header>
     <div class="header-content">
+        <!-- Логотип -->
         <div class="logo">
             <h2>The Gilded</h2>
             <p>.hour</p>
         </div>
 
-        <!-- Desktop Navigation -->
+        <!-- Десктопна навігація -->
         <nav class="desktop-nav">
             <ul>
                 <li><a href="index.html">Головна</a></li>
-                <li><a href="Menu.html">Меню</a></li>
-                <li><a href="Services.html">Послуги</a></li>
-                <li><a href="About.html">Про нас</a></li>
+                <li><a href="menu.html">Меню</a></li>
+                <li><a href="services.html">Послуги</a></li>
+                <li><a href="about.html">Про нас</a></li>
             </ul>
-            <a href="Contacts.html">
+            <a href="contacts.html">
                 <button class="button-contacts">
+                    <img src="img/phone.png" alt="Phone">
                     Контакти
-                    <img src="img/phone.png" alt="Phone" loading="lazy">
                 </button>
             </a>
         </nav>
-    </div>
-</header>
-<!--HEADER-->
 
+        <!-- Бургер-меню для мобільних -->
+        <div class="burger-menu" id="burgerMenu">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </div>
+    </div>
+
+    <!-- Мобільна навігація -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="menu.html">Меню</a></li>
+            <li><a href="services.html">Послуги</a></li>
+            <li><a href="about.html">Про нас</a></li>
+        </ul>
+        <a href="contacts.html">
+            <button class="button-contacts">
+                <img src="img/phone.png" alt="Phone">
+                Контакти
+            </button>
+        </a>
+    </nav>
+</header>
+<!-- КІНЕЦЬ HEADER -->
+
+<!-- MAIN CONTENT -->
 <main>
+    <!-- Головна секція з заголовком -->
     <section class="contact-hero">
         <div class="container">
             <div class="hero-content">
@@ -48,19 +79,23 @@
         </div>
     </section>
 
+    <!-- Секція контактної інформації та годин роботи -->
     <section class="contact-sections">
         <div class="container">
             <div class="contact-grid">
-                <!-- Contact Information -->
+                <!-- Контактна інформація -->
                 <div class="contact-section">
                     <div class="section-header">
                         <h2>Контактна інформація</h2>
                         <div class="divider"></div>
                     </div>
                     <div class="contact-cards">
+                        <!-- Адреса -->
                         <div class="contact-card">
                             <div class="card-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
                                     <circle cx="12" cy="10" r="3"/>
                                 </svg>
@@ -71,10 +106,24 @@
                             </div>
                         </div>
 
+                        <!-- Телефони -->
                         <div class="contact-card">
                             <div class="card-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2
+                                    19.79 19.79 0 0 1-8.63-3.07
+                                    19.5 19.5 0 0 1-6-6
+                                    19.79 19.79 0 0 1-3.07-8.67
+                                    A2 2 0 0 1 4.11 2h3
+                                    a2 2 0 0 1 2 1.72
+                                    12.84 12.84 0 0 0 .7 2.81
+                                    2 2 0 0 1-.45 2.11L8.09 9.91
+                                    a16 16 0 0 0 6 6l1.27-1.27
+                                    a2 2 0 0 1 2.11-.45
+                                    12.84 12.84 0 0 0 2.81.7
+                                    A2 2 0 0 1 22 16.92z"/>
                                 </svg>
                             </div>
                             <div class="card-content">
@@ -84,9 +133,12 @@
                             </div>
                         </div>
 
+                        <!-- Електронна пошта -->
                         <div class="contact-card">
                             <div class="card-icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <rect width="20" height="16" x="2" y="4" rx="2"/>
                                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
                                 </svg>
@@ -100,7 +152,7 @@
                     </div>
                 </div>
 
-                <!-- Working Hours -->
+                <!-- Години роботи -->
                 <div class="hours-section">
                     <div class="section-header">
                         <h2>Години роботи</h2>
@@ -122,6 +174,7 @@
                             </div>
                         </div>
 
+                        <!-- Інформація про бронювання -->
                         <div class="reservation-info">
                             <h3>Бронювання столиків</h3>
                             <p>Щоденно з 10:00 до 21:00</p>
@@ -133,7 +186,7 @@
         </div>
     </section>
 
-    <!-- Map Section -->
+    <!-- Карта Google Maps -->
     <section class="map-section">
         <div class="container">
             <div class="section-header">
@@ -141,54 +194,47 @@
                 <div class="divider"></div>
             </div>
             <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1819.3239733511416!2d24.02565813205273!3d49.84409901979377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add730c752709%3A0xc8c7f4cc48a1340c!2sMAGNUS!5e0!3m2!1suk!2sua!4v1758558595630!5m2!1suk!2sua"
-                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1819.3239733511416!2d24.02565813205273!3d49.84409901979377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add730c752709%3A0xc8c7f4cc48a1340c!2sMAGNUS!5e0!3m2!1suk!2sua!4v1758558595630!5m2!1suk!2sua"
+                        allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </div>
     </section>
 </main>
+<!-- КІНЕЦЬ MAIN CONTENT -->
 
+<!-- FOOTER -->
 <footer>
     <div class="footer-container">
+        <!-- Соціальні мережі -->
         <div class="social-media">
-            <a href="#" target="_blank">
+            <a href="https://www.instagram.com/_.byl04ka._/" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg"
-                     width="24" height="24"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2"
-                     stroke-linecap="round"
-                     stroke-linejoin="round"
+                     width="24" height="24" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round"
                      class="lucide lucide-instagram">
                     <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
                 </svg>
             </a>
-            <a href="#" target="_blank">
+            <a href="https://www.facebook.com/viktoria.sakalo.2025/" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg"
-                     width="24" height="24"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2"
-                     stroke-linecap="round"
-                     stroke-linejoin="round"
+                     width="24" height="24" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round"
                      class="lucide lucide-facebook">
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                 </svg>
             </a>
-            <a href="https://www.linkedin.com/in/%D0%BA%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B0-%D0%BA%D0%BE%D1%81%D1%96%D0%BD%D0%BE%D0%B2%D0%B0-572275385/"
+            <a href="https://www.linkedin.com/in/%D0%B2%D1%96%D0%BA%D1%82%D0%BE%D1%80%D1%96%D1%8F-%D1%81%D0%B0%D0%BA%D0%B0%D0%BB%D0%BE-173269385/"
                target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg"
-                     width="24" height="24"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2"
-                     stroke-linecap="round"
-                     stroke-linejoin="round"
+                     width="24" height="24" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round" stroke-linejoin="round"
                      class="lucide lucide-linkedin">
                     <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
                     <rect width="4" height="12" x="2" y="9"/>
@@ -197,16 +243,26 @@
             </a>
         </div>
 
+        <!-- Платіжні системи -->
         <div class="visa">
-            <img src="img/visa.png" alt="Visa" style="height: 60px;">
+            <img src="img/visa.png" alt="Visa">
             <img src="img/mastercard.png" alt="Mastercard">
         </div>
+
+        <!-- Контактна інформація -->
         <div class="contacts-footer">
             <p>Email: <a href="mailto:info@gildedhour.com">info@gildedhour.com</a></p>
             <p>Телефон: <a href="tel:+380501234567">+38 (050) 123-45-67</a></p>
         </div>
+
+        <!-- Авторські права -->
         <p class="rights">&copy; The Gilded Hour, all rights reserved 2025</p>
     </div>
 </footer>
+<!-- КІНЕЦЬ FOOTER -->
+
+<!-- SCRIPTS -->
+<script src="menu-burger.js"></script>
+<!-- КІНЕЦЬ SCRIPTS -->
 </body>
 </html>

@@ -2,6 +2,9 @@
 
 * {
     font-family: "Cormorant Garamond", serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -21,7 +24,7 @@ header {
 
 header .header-content {
     height: 100%;
-    width: 1250px;
+    width: 80%;
     margin: 0 auto;
     display: flex;
     align-items: center;
@@ -73,10 +76,10 @@ header nav ul {
     text-transform: capitalize;
 }
 
-.button-contacts{
+.header-button {
     display: flex;
     padding: 10px 17px;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
     border-radius: 4px;
     border: none;
@@ -84,19 +87,122 @@ header nav ul {
     box-shadow: 1px 1px 15px 0 rgba(255, 240, 240, 0.44);
     color: black;
     font-size: 18px;
+    font-weight: 700;
+    text-transform: capitalize;
+    cursor: pointer;
+
+    transition: transform 0.3s ease;
+}
+
+.header-button img {
+    width: 20px;
+    height: 20px;
+}
+
+.header-button:hover {
+    transform: scale(1.05);
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.button-login{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    left: 100px;
+}
+
+/* Стилі для бургер-меню */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.burger-line {
+    width: 25px;
+    height: 3px;
+    background: #f8f0e3;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Мобільна навігація */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 86px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 86px);
+    background: #1a1a1a;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 50px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 9;
+}
+
+.mobile-nav.active {
+    transform: translateX(0);
+}
+
+.mobile-nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.mobile-nav ul li {
+    width: 80%;
+    text-align: center;
+}
+
+.mobile-nav ul li a {
+    color: #f8f0e3;
+    font-size: 24px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     text-transform: capitalize;
-    transition: 1s;
+    text-decoration: none;
+    display: block;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(248, 240, 227, 0.2);
+    transition: color 0.3s;
 }
-.button-contacts img{
-    width: 20px;
-    height: 20px;
+
+.mobile-nav ul li a:hover {
+    color: #d4c4a8;
 }
-button:hover{
-    transform: scale(1.05);
-    transition: 2s;
+
+.mobile-nav .button-contacts {
+    margin-top: 40px;
+    font-size: 20px;
+    padding: 15px 25px;
+}
+
+/* Анімація бургер-іконки */
+.burger-menu.active .burger-line:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger-menu.active .burger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active .burger-line:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 main {
@@ -111,7 +217,7 @@ main {
 
 /* Hero Section */
 .section-hero {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/menu.jpg');
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/menu.jpg');
     background-size: cover;
     background-position: center;
     height: 400px;
@@ -292,11 +398,6 @@ main {
     background: rgba(248, 240, 227, 0.05);
     border-radius: 10px;
     padding: 25px;
-    /*    height: fit-content;*/
-    /*    position: sticky;*/
-    /*    top: 120px;*/
-    /*    flex: 1;*/
-
 }
 
 .cart-header {
@@ -464,15 +565,181 @@ main {
     padding: 40px 0;
 }
 
+/* Мобільний кошик */
+.mobile-cart-btn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: #f8f0e3;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.mobile-cart-btn:hover {
+    transform: scale(1.1);
+    background: #e8e0d3;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff4757;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Мобільне модальне вікно кошика */
+.mobile-cart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1100;
+    overflow-y: auto;
+}
+
+.mobile-cart-modal.active {
+    display: block;
+}
+
+.mobile-cart-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #1a1a1a;
+    border-radius: 20px 20px 0 0;
+    padding: 25px 20px;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+.mobile-cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(248, 240, 227, 0.2);
+}
+
+.mobile-cart-header h3 {
+    font-size: 22px;
+    color: #f8f0e3;
+    margin: 0;
+}
+
+.close-cart-btn {
+    background: none;
+    border: none;
+    color: #f8f0e3;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mobile-cart-items {
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.mobile-cart-total {
+    border-top: 2px solid rgba(248, 240, 227, 0.2);
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.mobile-total-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    color: #f8f0e3;
+    margin-bottom: 15px;
+}
+
+.mobile-cart-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mobile-checkout-btn,
+.mobile-clear-cart-btn {
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mobile-checkout-btn {
+    background: #f8f0e3;
+    color: #1a1a1a;
+}
+
+.mobile-checkout-btn:hover {
+    background: #e8e0d3;
+}
+
+.mobile-clear-cart-btn {
+    background: transparent;
+    color: #d4c9b8;
+    border: 1px solid rgba(248, 240, 227, 0.3);
+}
+
+.mobile-clear-cart-btn:hover {
+    background: rgba(248, 240, 227, 0.1);
+    color: #f8f0e3;
+}
+
+/* Мобільний віджет */
+.mobile-widget {
+    display: none;
+    width: 90%;
+    margin: 20px auto;
+    background: rgba(248, 240, 227, 0.05);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.mobile-widget p {
+    font-size: 20px;
+    font-weight: 600;
+    color: #f8f0e3;
+    margin-bottom: 15px;
+    text-align: center;
+}
 .widget {
     width: 100%;
     border-radius: 10px;
     background: rgba(248, 240, 227, 0.05);
     padding: 25px;
-    /*    position: sticky;*/
-    /*    top: 120px;*/
-    /*    flex: 1;*/
-    /*    height: fit-content;*/
 }
 
 .widget p{
@@ -510,11 +777,12 @@ footer .social-media {
 footer .social-media svg {
     transition: 0.3s;
     cursor: pointer;
+    color: #f8f0e3;
 }
 
 footer .social-media svg:hover {
     transform: scale(1.2);
-    stroke: #ffebca;
+    color: #ffebca;
 }
 
 footer .visa {
@@ -542,7 +810,7 @@ footer .contacts-footer{
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1px;
+    gap: 5px;
 }
 
 footer .contacts-footer a {
@@ -559,52 +827,58 @@ footer .contacts-footer a:hover {
 footer .contacts-footer p {
     margin: 0;
 }
+
+/* --- Виправлення кнопки для залогіненого користувача --- */
+
+/* Коли до кнопки додається клас .user-logged-in через JS */
+.button-login.user-logged-in {
+    width: auto !important;       /* Дозволяємо ширині підлаштуватись під текст */
+    height: auto !important;      /* Висота теж автоматична */
+    border-radius: 4px !important; /* Робимо кути трохи заокругленими, а не круглими */
+    padding: 10px 20px !important; /* Додаємо відступи, щоб текст не прилипав */
+
+    /* Скидаємо позиціонування, якщо воно заважає */
+    position: static !important;
+    left: auto !important;
+    margin-left: 20px; /* Невеликий відступ від кнопки "Контакти" */
+
+    /* Вирівнювання іконки та тексту */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Виправляємо розмір іконки всередині цієї кнопки */
+.button-login.user-logged-in img {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+}
+
+/* МЕДІА-ЗАПИТИ */
 @media (max-width: 480px) {
-    .container,
-    header .header-content,
-    .footer-container {
-        width: 100%;
-        max-width: 100%;
-    }
     header .header-content {
         width: 100%;
-        padding: 0 20px
+        padding: 0 15px;
+    }
+
+    header {
+        height: 70px;
+    }
+
+    .mobile-nav {
+        top: 70px;
+        height: calc(100vh - 70px);
     }
 
     .logo h2 {
-        font-size: 18px;
-        margin-top: 7.5px;
-        width: 40px
+        font-size: 20px;
+        margin-top: 10px;
     }
 
     .logo p {
-        width: 24px;
-        height: 14px;
-        font-size: 9px;
-        margin-top: 7.5px;
-    }
-
-    header nav {
-        gap: 25px;
-    }
-
-    header nav ul {
-        gap: 25px;
-        color: #f8f0e3;
-        font-size: 10px;
-        margin-top: 16px;
-    }
-
-    .button-contacts {
-        padding: 5px 8.5px;
-        gap: 5px;
-        border-radius: 2px;
-        font-size: 9px;
-    }
-
-    .button-contacts img {
-        width: 10px;
-        height: 10px;
+        font-size: 12px;
+        margin-top: 10px;
     }
 
     .footer-container {
@@ -616,13 +890,6 @@ footer .contacts-footer p {
         align-items: center;
         justify-content: space-between;
         gap: 10px;
-    }
-    .footer-top {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 25px;
-        flex-wrap: wrap;
     }
 
     .social-media {
@@ -645,6 +912,7 @@ footer .contacts-footer p {
     .visa img {
         height: 22px;
     }
+
     .contacts-footer {
         display: flex;
         flex-direction: column;
@@ -665,10 +933,9 @@ footer .contacts-footer p {
         margin-top: 3px;
     }
 
-/*    ----------------------------------------------*/
+    /* Hero Section */
     .section-hero {
         height: 200px;
-        top: -40px;
     }
 
     .hero-content h1 {
@@ -680,9 +947,13 @@ footer .contacts-footer p {
         font-size: 14px;
         max-width: 400px;
     }
+
+    /* Menu Container */
     .menu-container{
         padding: 20px 0;
+        flex-direction: column;
     }
+
     .menu-categories {
         display: flex;
         flex-wrap: nowrap;
@@ -694,6 +965,7 @@ footer .contacts-footer p {
         scrollbar-width: none;
         margin-bottom: 20px;
     }
+
     .menu-categories::-webkit-scrollbar {
         display: none;
     }
@@ -713,67 +985,96 @@ footer .contacts-footer p {
     .category-title {
         font-size: 24px;
         margin-bottom: 20px;
+        text-align: center;
     }
 
-/*    -------------------------------------*/
+    /* Items Grid */
+    .items-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .menu-item{
+        margin: 0 10px;
+    }
+
+    /* Sidebar */
     .sidebar {
         display: none !important;
     }
 
-    /* Кнопка кошика (спливаюча) */
-    .open-cart-btn {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1050;
-        background: #f8f0e3;
-        color: #1a1a1a;
-        font-weight: 600;
-        border-radius: 30px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-        padding: 10px 18px;
-        font-size: 16px;
+    /* Mobile Cart */
+    .mobile-cart-btn {
+        display: flex;
     }
 
-    .open-cart-btn:hover {
-        background: #e8e0d3;
+    .mobile-widget {
+        display: block;
     }
-    .offcanvas {
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 80%;
-        height: 100%;
-        transition: right 0.3s ease;
-        background: rgba(26, 26, 26, 0.98);
-        z-index: 1100;
-        padding: 20px;
-        overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0 20px;
     }
 
-    /* Клас відкритого кошика */
-    .offcanvas.show {
-        right: 0;
+    header .header-content {
+        width: 100%;
+        padding: 0 20px;
     }
 
-    .offcanvas .cart-items {
-        max-height: 60vh;
-        overflow-y: auto;
+    .desktop-nav {
+        display: none;
     }
 
-    .offcanvas .total-line span {
-        color: #f8f0e3;
+    .burger-menu {
+        display: flex;
     }
 
-    .offcanvas .checkout-btn,
-    .offcanvas .clear-cart-btn {
-        font-size: 15px;
-        font-weight: 600;
+    .mobile-nav {
+        display: flex;
     }
-    .category-title{
-        text-align: center;
+
+    .mobile-cart-btn {
+        display: flex;
     }
-    .menu-item{
-        margin: 0 10px;
+
+    .mobile-widget {
+        display: block;
+    }
+
+    .menu-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        position: static;
+        margin-top: 30px;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-nav {
+        display: none !important;
+    }
+
+    .mobile-cart-btn {
+        display: none;
+    }
+
+    .mobile-widget {
+        display: none;
+    }
+}
+
+/* Загальні виправлення для всіх пристроїв */
+@media (max-width: 1200px) {
+    .container,
+    header .header-content,
+    .footer-container {
+        width: 95%;
+        max-width: 100%;
     }
 }

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мої замовлення - The Gilded Hour</title>
+
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style-menu.css"> <link rel="stylesheet" href="styles/style-orders.css"> <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+</head>
+<body>
+
+<header>
+    <div class="header-content">
+        <div class="logo">
+            <h2>The Gilded</h2>
+            <p>.hour</p>
+        </div>
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="menu.html">Меню</a></li>
+                <li><a href="services.html">Послуги</a></li>
+                <li><a href="about.html">Про нас</a></li>
+            </ul>
+            <div class="login">
+                <a href="contacts.html">
+                    <button class="button-contacts header-button">
+                        <img src="img/phone.png" alt="Phone"> Контакти
+                    </button>
+                </a>
+                <button id="logout-btn" class="header-button" style="margin-left: 10px;">Вийти</button>
+            </div>
+        </nav>
+        <div class="burger-menu" id="burgerMenu">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="orders-hero">
+        <div class="container">
+            <h1>Історія ваших замовлень</h1>
+            <p>Перегляньте ваші попередні візити та смачні спогади</p>
+        </div>
+    </section>
+
+    <div class="container orders-container">
+        <div id="orders-list" class="orders-list">
+            <div class="loading">Завантаження замовлень...</div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-container">
+        <p class="rights">© The Gilded Hour, all rights reserved 2025</p>
+    </div>
+</footer>
+
+<script src="menu-burger.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", async () => {
+        const userId = localStorage.getItem("user_id");
+        const ordersList = document.getElementById("orders-list");
+        const logoutBtn = document.getElementById("logout-btn");
+
+        // Перевірка авторизації
+        if (!userId) {
+            window.location.href = "login.html";
+            return;
+        }
+
+        // Логіка виходу
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", () => {
+                localStorage.removeItem("user_id");
+                window.location.href = "login.html";
+            });
+        }
+
+        try {
+            const response = await fetch(`http://localhost:3000/orders/${userId}`);
+
+            if (!response.ok) {
+                throw new Error("Не вдалося отримати дані з сервера");
+            }
+
+            const orders = await response.json();
+
+            if (orders.length === 0) {
+                ordersList.innerHTML = `<div class="empty-orders">У вас ще немає замовлень. <a href="menu.html">Перейти до меню</a></div>`;
+                return;
+            }
+
+            // Рендеринг карток
+            // Додаємо другий параметр index у map(order, index)
+            ordersList.innerHTML = orders.map((order, index) => {
+                let itemsHtml = '';
+
+                // --- ЛОГІКА ВІЗУАЛЬНОГО НОМЕРА ---
+                // Оскільки orders приходять від нових до старих,
+                // номер поточного замовлення = (Загальна кількість) - (поточний індекс)
+                const userOrderNumber = orders.length - index;
+
+                try {
+                    let detailsData = order.order_details;
+
+                    // Парсинг JSON (потрійна перевірка про всяк випадок)
+                    if (typeof detailsData === 'string') {
+                        try {
+                            detailsData = JSON.parse(detailsData);
+                        } catch (e) {
+                            // Якщо перший парс не вдався, можливо це "брудний" рядок, залишаємо як є для логування
+                        }
+                    }
+                    if (typeof detailsData === 'string') {
+                        try {
+                            detailsData = JSON.parse(detailsData);
+                        } catch (e) {}
+                    }
+
+                    if (!Array.isArray(detailsData)) {
+                        console.error(`Order ID ${order.id}: Дані не масив`, detailsData);
+                        // Якщо сталася помилка, покажемо пустий масив, щоб не ламати верстку
+                        detailsData = [];
+                        itemsHtml = '<p style="color: #d4c9b8;">Деталі недоступні</p>';
+                    } else {
+                        // Формуємо HTML списку товарів
+                        itemsHtml = detailsData.map(item => `
+                            <div class="order-item-row">
+                                <span>${item.name || "Товар"} <small>(x${item.quantity || 1})</small></span>
+                                <span>${(item.price || 0) * (item.quantity || 1)} грн</span>
+                            </div>
+                        `).join('');
+                    }
+
+                } catch (e) {
+                    console.error("Помилка обробки:", e);
+                    itemsHtml = '<p>Помилка даних</p>';
+                }
+
+                // Форматування дати
+                const date = new Date(order.created_at).toLocaleDateString('uk-UA', {
+                    year: 'numeric', month: 'long', day: 'numeric',
+                    hour: '2-digit', minute: '2-digit'
+                });
+
+                // В HTML замість ${order.id} вставляємо ${userOrderNumber}
+                // Але реальний ID можна залишити в атрибуті data-id для розробки
+                return `
+                    <div class="order-card" data-db-id="${order.id}">
+                        <div class="order-header">
+                            <h3>Замовлення #${userOrderNumber}</h3>
+                            <span class="order-date">${date}</span>
+                        </div>
+                        <div class="order-body">
+                            ${itemsHtml}
+                        </div>
+                        <div class="order-footer">
+                            <span class="status completed">Виконано</span>
+                            <span class="total-price">Всього: ${order.total_price} грн</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+        } catch (error) {
+            console.error("Global Error:", error);
+            ordersList.innerHTML = `<div class="error">Помилка завантаження історії.</div>`;
+        }
+    });
+</script>
+</body>
+</html>

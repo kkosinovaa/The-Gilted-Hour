@@ -7,7 +7,7 @@
     box-sizing: border-box;
 }
 
-body {
+body{
     background: #1a1a1a;
     color: #f8f0e3;
 }
@@ -20,15 +20,19 @@ header {
     box-shadow: 4px 6px 13px 0 rgba(234, 234, 234, 0.25);
     position: fixed;
     z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header .header-content {
     height: 100%;
-    width: 1250px;
+    width: 80%;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 50px;
 }
 
 .logo {
@@ -74,23 +78,13 @@ header nav ul {
     font-weight: 700;
     line-height: normal;
     text-transform: capitalize;
-    list-style: none;
+    margin-top: 16px;
 }
 
-header nav ul li a {
-    color: #f8f0e3;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-header nav ul li a:hover {
-    color: #ffebca;
-}
-
-.button-contacts {
+.header-button {
     display: flex;
     padding: 10px 17px;
-    align-items: flex-start;
+    align-items: center;
     gap: 10px;
     border-radius: 4px;
     border: none;
@@ -98,22 +92,114 @@ header nav ul li a:hover {
     box-shadow: 1px 1px 15px 0 rgba(255, 240, 240, 0.44);
     color: black;
     font-size: 18px;
-    font-style: normal;
     font-weight: 700;
-    line-height: normal;
     text-transform: capitalize;
-    transition: 0.3s;
     cursor: pointer;
-    text-decoration: none;
+
+    transition: transform 0.3s ease;
 }
 
-.button-contacts img {
+.header-button img {
     width: 20px;
     height: 20px;
 }
 
-button:hover {
+.header-button:hover {
     transform: scale(1.05);
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Стилі для бургер-меню */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.burger-line {
+    width: 25px;
+    height: 3px;
+    background: #f8f0e3;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Мобільна навігація */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 86px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 86px);
+    background: #1a1a1a;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 50px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 9;
+}
+
+.mobile-nav.active {
+    transform: translateX(0);
+}
+
+.mobile-nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.mobile-nav ul li {
+    width: 80%;
+    text-align: center;
+}
+
+.mobile-nav ul li a {
+    color: #f8f0e3;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    text-decoration: none;
+    display: block;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(248, 240, 227, 0.2);
+    transition: color 0.3s;
+}
+
+.mobile-nav ul li a:hover {
+    color: #d4c4a8;
+}
+
+.mobile-nav .button-contacts {
+    margin-top: 40px;
+    font-size: 20px;
+    padding: 15px 25px;
+}
+
+/* Анімація бургер-іконки */
+.burger-menu.active .burger-line:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger-menu.active .burger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active .burger-line:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
 }
 
 /*------------------------------------------main/section-representation-------------------------------------------*/
@@ -177,7 +263,7 @@ button:hover {
     right: 20px;
 }
 
-.carousel-control-prev:hover, .carousel-control-next:hover {
+.carousel-control-prev:hover, .carousel-control-next:hover{
     opacity: 1;
     background: rgba(248, 240, 227, 0.95);
 }
@@ -203,7 +289,7 @@ button:hover {
 }
 
 /*----------------------------------main/section-gallery-------------------------------------------*/
-.section-gallery {
+.section-gallery{
     background: #1a1a1a;
     display: flex;
     align-items: center;
@@ -216,15 +302,17 @@ button:hover {
     max-width: 1400px;
 }
 
-.section-gallery .gallery h2 {
+.section-gallery .gallery h2{
     color: #f8f0e3;
     font-size: 46px;
+    font-style: normal;
     font-weight: 600;
+    line-height: normal;
     text-align: center;
     margin: 30px 0;
 }
 
-.section-gallery .wrapper {
+.section-gallery .wrapper{
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -232,7 +320,7 @@ button:hover {
     justify-items: center;
 }
 
-.section-gallery .wrapper .item {
+.section-gallery .wrapper .item{
     box-shadow: 1px 1px 15px 0 rgba(255, 240, 240, 0.2);
     transition: 0.3s;
     border-radius: 8px;
@@ -241,12 +329,12 @@ button:hover {
     max-width: 300px;
 }
 
-.section-gallery .wrapper .item:hover {
+.section-gallery .wrapper .item:hover{
     transform: scale(1.05);
     box-shadow: 1px 1px 15px 0 rgba(255, 240, 240, 0.55);
 }
 
-.section-gallery .wrapper img {
+.section-gallery .wrapper img{
     width: 100%;
     height: 250px;
     object-fit: cover;
@@ -315,7 +403,7 @@ footer .rights {
     opacity: 0.8;
 }
 
-footer .contacts-footer {
+footer .contacts-footer{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -467,52 +555,24 @@ input[type="tel"]::placeholder {
 
 @media (max-width: 480px) {
     header {
-        width: 100%;
-        height: 60px;
+        height: 70px;
     }
 
-    header .header-content {
-        width: 100%;
-        padding: 0 20px
+    .mobile-nav {
+        top: 70px;
+        height: calc(100vh - 70px);
     }
 
     .logo h2 {
-        font-size: 18px;
-        margin-top: 7.5px;
-        width: 40px
+        font-size: 24px;
+        margin-top: 10px;
     }
 
     .logo p {
-        width: 24px;
-        height: 14px;
-        font-size: 9px;
-        margin-top: 7.5px;
+        font-size: 14px;
+        margin-top: 10px;
     }
 
-    header nav {
-        gap: 25px;
-    }
-
-    header nav ul {
-        gap: 25px;
-        color: #f8f0e3;
-        font-size: 10px;
-        margin-top: 16px;
-    }
-
-    .button-contacts {
-        padding: 5px 8.5px;
-        gap: 5px;
-        border-radius: 2px;
-        font-size: 9px;
-    }
-
-    .button-contacts img {
-        width: 10px;
-        height: 10px;
-    }
-
-    /*-------------------------------------------------------------------------*/
     .section-representation {
         padding-top: 43px;
     }
@@ -570,8 +630,6 @@ input[type="tel"]::placeholder {
         height: 6px;
     }
 
-    /*    ----------------------------------------------------------------*/
-
     .section-gallery {
         padding: 0;
     }
@@ -594,7 +652,7 @@ input[type="tel"]::placeholder {
     .carousel-control-next-icon {
         filter: invert(1);
     }
-    /*--------------------------------------------------------------*/
+
     .contacts-form {
         background: #1a1a1a;
         padding: 0 10px 20px 0;
@@ -662,7 +720,7 @@ input[type="tel"]::placeholder {
         height: 25px;
         font-size: 10px;
     }
-    /*----------------------------------------*/
+
     footer {
         background: #1a1a1a;
         padding: 20px 10px;
@@ -679,6 +737,7 @@ input[type="tel"]::placeholder {
         justify-content: space-between;
         gap: 10px;
     }
+
     .footer-top {
         display: flex;
         justify-content: center;
@@ -707,6 +766,7 @@ input[type="tel"]::placeholder {
     .visa img {
         height: 22px;
     }
+
     .contacts-footer {
         display: flex;
         flex-direction: column;
@@ -725,5 +785,25 @@ input[type="tel"]::placeholder {
         font-size: 11px;
         opacity: 0.7;
         margin-top: 3px;
+    }
+}
+
+@media (max-width: 768px) {
+    .desktop-nav {
+        display: none;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    .mobile-nav {
+        display: flex;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-nav {
+        display: none !important;
     }
 }

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вхід - The Gilded Hour</title>
+    <link rel="stylesheet" href="styles/style_login.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+</head>
+<body>
+
+<header>
+</header>
+
+<main class="login-container">
+
+    <div class="login-card">
+        <h2>Вхід</h2>
+
+        <form id="login-form" action="#" method="POST">
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button type="submit" class="header-button login-submit-button">
+                Увійти
+            </button>
+
+        </form>
+
+        <div class="login-links">
+            <a href="create_account.html">Створити акаунт</a>
+            <a href="#">Забули пароль?</a>
+        </div>
+    </div>
+
+</main>
+<script>
+    document.getElementById("login-form").addEventListener("submit", async function(e) {
+        e.preventDefault(); // ВАЖЛИВО
+
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+
+        if (!email || !password) {
+            alert("Заповніть всі поля");
+            return;
+        }
+
+        try {
+            const res = await fetch("http://localhost:3000/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await res.json();
+            console.log("Server Response:", data);
+
+            if (res.status === 200 && data.user_id) {
+                localStorage.setItem("user_id", data.user_id);
+                alert("Вхід успішний!");
+                window.location.href = "menu.html";
+            } else {
+                alert(data.message || "Невірний логін або пароль");
+            }
+        } catch (error) {
+            console.error("Fetch error:", error);
+            alert("Помилка сервера");
+        }
+    });
+</script>
+
+
+</body>
+</html>

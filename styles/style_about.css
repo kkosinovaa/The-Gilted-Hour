@@ -1,0 +1,913 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap');
+
+* {
+    font-family: "Cormorant Garamond", serif;
+}
+body{
+    background: #1a1a1a;
+}
+/*-----------------------------------header--------------------------------------*/
+header {
+    width: 100%;
+    height: 86px;
+    background: #1a1a1a;
+    box-shadow: 4px 6px 13px 0 rgba(234, 234, 234, 0.25);
+    position: fixed;
+    z-index: 10;
+}
+
+header .header-content {
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: baseline;
+}
+
+.logo h2 {
+    color: #f8f0e3;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 15px;
+}
+
+.logo p {
+    width: 48px;
+    height: 27px;
+    color: #f8f0e3;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 15px;
+}
+
+header nav {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 50px;
+}
+
+header nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    color: #f8f0e3;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+}
+
+.header-button {
+    display: flex;
+    padding: 10px 17px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 4px;
+    border: none;
+    background: #f8f0e3;
+    box-shadow: 1px 1px 15px 0 rgba(255, 240, 240, 0.44);
+    color: black;
+    font-size: 18px;
+    font-weight: 700;
+    text-transform: capitalize;
+    cursor: pointer;
+
+    transition: transform 0.3s ease;
+}
+
+.header-button img {
+    width: 20px;
+    height: 20px;
+}
+
+.header-button:hover {
+    transform: scale(1.05);
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.button-login{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: relative;
+    left: 100px;
+}
+
+/* Стилі для бургер-меню */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.burger-line {
+    width: 25px;
+    height: 3px;
+    background: #f8f0e3;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Мобільна навігація */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 86px;
+    left: 0;
+    width: 100%;
+    height: calc(100vh - 86px);
+    background: #1a1a1a;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 50px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 9;
+}
+
+.mobile-nav.active {
+    transform: translateX(0);
+}
+
+.mobile-nav ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.mobile-nav ul li {
+    width: 80%;
+    text-align: center;
+}
+
+.mobile-nav ul li a {
+    color: #f8f0e3;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    text-decoration: none;
+    display: block;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(248, 240, 227, 0.2);
+    transition: color 0.3s;
+}
+
+.mobile-nav ul li a:hover {
+    color: #d4c4a8;
+}
+
+.mobile-nav .button-contacts {
+    margin-top: 40px;
+    font-size: 20px;
+    padding: 15px 25px;
+}
+
+/* Анімація бургер-іконки */
+.burger-menu.active .burger-line:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.burger-menu.active .burger-line:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.active .burger-line:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+main {
+    padding-top: 86px;
+}
+
+.container {
+    width: 1250px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* ВИДАЛИТИ ДУБЛЬОВАНІ СТИЛІ, ЯКІ ЙДУТЬ НИЖЧЕ - ВОНИ ВЖЕ Є ВИЩЕ */
+
+/* Hero Section */
+.section-hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../img/restaurant-interior.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.hero-content h1 {
+    font-size: 60px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #f8f0e3;
+}
+
+.hero-content p {
+    font-size: 28px;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #f8f0e3;
+}
+
+/* About Restaurant Section */
+.section-about-rest {
+    padding: 80px 0;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text h2 {
+    font-size: 46px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    color: #f8f0e3;
+}
+
+.about-text p {
+    font-size: 24px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #f8f0e3;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.about-image img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 1px 1px 15px 0 rgba(255, 240, 240, 0.13);
+    transition: 2s;
+}
+
+/* Cuisine Section */
+.section-cuisine {
+    padding: 80px 0;
+    background: rgba(248, 240, 227, 0.05);
+}
+
+.section-cuisine h2 {
+    font-size: 46px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #f8f0e3;
+}
+
+.cuisine-item {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 60px;
+}
+
+.cuisine-item.reverse {
+    flex-direction: row-reverse;
+}
+
+.cuisine-image {
+    flex: 1;
+}
+
+.cuisine-image img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+.cuisine-image img:hover {
+    transform: scale(1.005);
+    transition: 0.3s;
+    box-shadow: 1px 1px 15px 0 rgba(255, 240, 240, 0.3);
+}
+
+.cuisine-text {
+    flex: 1;
+}
+
+.cuisine-text h3 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #f8f0e3;
+}
+
+.cuisine-text p {
+    font-size: 22px;
+    line-height: 1.6;
+    color: #f8f0e3;
+}
+
+.section-cooking-process {
+    padding: 80px 0;
+    background: rgba(248, 240, 227, 0.03);
+}
+
+.processing {
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.processing h2 {
+    font-size: 46px;
+    font-weight: 600;
+    margin-bottom: 50px;
+    color: #f8f0e3;
+    text-align: center;
+}
+
+.video {
+    width: 100%;
+    max-width: 900px;
+    height: 500px;
+    border-radius: 15px;
+    box-shadow: 1px 1px 25px 0 rgba(255, 240, 240, 0.1);
+    border: 2px solid rgba(248, 240, 227, 0.1);
+    transition: all 0.3s ease;
+}
+
+.video:hover {
+    box-shadow: 1px 1px 35px 0 rgba(255, 240, 240, 0.2);
+    border-color: rgba(248, 240, 227, 0.3);
+    transform: scale(1.005);
+}
+
+footer {
+    background: #1a1a1a;
+    padding: 40px 0 20px;
+    border-top: 1px solid rgba(248, 240, 227, 0.1);
+    color:#f8f0e3;
+}
+
+.footer-container {
+    width: 1250px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer .social-media {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+footer .social-media svg {
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+footer .social-media svg:hover {
+    transform: scale(1.2);
+    stroke: #ffebca;
+}
+
+footer .visa {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+footer .visa img {
+    height: 35px;
+    transition: 0.3s;
+}
+
+footer .visa img:hover {
+    transform: scale(1.1);
+}
+
+footer .rights {
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+footer .contacts-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+}
+
+footer .contacts-footer a {
+    color: #f8f0e3;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+footer .contacts-footer a:hover {
+    text-decoration: underline;
+    color: #ffebca;
+}
+
+footer .contacts-footer p {
+    margin: 0;
+}
+.section-team {
+    padding: 80px 0;
+}
+
+.section-team h2 {
+    font-size: 46px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #f8f0e3;
+}
+
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.team-member {
+    text-align: center;
+    padding: 30px;
+    width: 370px;
+    min-height: 450px;
+    border-radius: 10px;
+    background: rgba(248, 240, 227, 0.05);
+    transition: 2s;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+    transition: 1s;
+    box-shadow: 1px 1px 15px 0 rgba(255, 240, 240, 0.2);
+}
+
+.member-photo {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 20px;
+}
+
+.member-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-member h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #f8f0e3;
+}
+
+.team-member p {
+    font-size: 22px;
+    margin-bottom: 5px;
+    color: #f8f0e3;
+}
+.divider {
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #f8f0e3, transparent);
+    margin: 30px 0;
+}
+
+
+
+/* Developer Section */
+.section-developer {
+    padding: 80px 0;
+    background: rgba(248, 240, 227, 0.05);
+}
+
+.section-developer h2 {
+    font-size: 46px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 50px;
+    color: #f8f0e3;
+}
+
+.developer-content {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.developer-photo {
+    flex: 1;
+    text-align: center;
+}
+
+.developer-photo img {
+    width: 400px;
+    height: 450px;
+    border-radius: 10%;
+    object-fit: cover;
+    box-shadow: 1px 1px 15px 0 rgba(255, 240, 240, 0.07);
+}
+
+.developer-info {
+    flex: 2;
+}
+
+.developer-info h3 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #f8f0e3;
+}
+
+.developer-info p {
+    font-size: 23px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #f8f0e3;
+}
+
+.developer-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.developer-skills span {
+    background: #f8f0e3;
+    color: #1a1a1a;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.developer-contact ul{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style-type: square;
+    padding-left: 20px;
+    color: #f8f0e3;
+}
+.developer-contact .email{
+    font-size:19px;
+}
+.developer-contact a:hover{
+    text-decoration: underline;
+    color: #ffebca;
+}
+.developer-contact p {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #f8f0e3;
+}
+
+.developer-contact a {
+    color: #f8f0e3;
+    font-size:19px;
+}
+
+/* АДАПТАЦІЯ */
+@media(max-width: 480px){
+    .container,
+    header .header-content,
+    .footer-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 0 15px;
+    }
+
+    header .header-content {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    header {
+        height: 70px;
+    }
+
+    .mobile-nav {
+        top: 70px;
+        height: calc(100vh - 70px);
+    }
+
+    .logo h2 {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    .logo p {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+
+    .footer-container {
+        width: 100%;
+        padding: 0 15px;
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .social-media {
+        gap: 20px;
+    }
+
+    .social-media svg {
+        width: 24px;
+        height: 24px;
+        color: #f8f0e3;
+    }
+
+    .visa {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .visa img {
+        height: 25px;
+    }
+
+    .contacts-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        font-size: 14px;
+    }
+
+    .contacts-footer a {
+        color: #f8f0e3;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .rights {
+        font-size: 12px;
+        opacity: 0.7;
+    }
+    /*------------------------------*/
+    .section-hero {
+        height: 250px;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+        margin-bottom: 15px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+        max-width: 90%;
+        padding: 0 10px;
+    }
+    /*    ---------------------------------------*/
+    .about-content{
+        flex-direction: column;
+        gap: 30px;
+    }
+    .about-text{
+        text-align: center;
+    }
+    .about-image img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+
+    .cuisine-item {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .cuisine-item.reverse {
+        flex-direction: column;
+    }
+
+    .about-text h2,
+    .section-cuisine h2,
+    .processing h2 {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .about-text p,
+    .cuisine-text p {
+        font-size: 16px;
+        line-height: 1.4;
+    }
+
+    .cuisine-text h3 {
+        font-size: 22px;
+        text-align: center;
+    }
+    .cuisine-image img {
+        height: 200px;
+        border-radius: 6px;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .section-about-rest,
+    .section-cuisine,
+    .section-cooking-process {
+        padding: 40px 0;
+    }
+    .video {
+        height: 200px;
+        max-width: 100%;
+    }
+    .cuisine-item {
+        margin-bottom: 40px;
+    }
+    .section-team {
+        padding: 40px 0;
+    }
+
+    .section-team h2 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .team-grid {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .team-member {
+        width: 100%;
+        padding: 20px;
+        min-height: auto;
+    }
+
+    .member-photo {
+        width: 180px;
+        height: 180px;
+    }
+
+    .team-member h3 {
+        font-size: 20px;
+    }
+
+    .team-member p {
+        font-size: 16px;
+    }
+
+    .divider {
+        margin: 20px 0;
+    }
+
+    /* --- Секція "Розробник сайту" --- */
+    .section-developer {
+        padding: 40px 0;
+    }
+
+    .section-developer h2 {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+
+    .developer-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        text-align: center;
+    }
+
+    .developer-photo img {
+        width: 250px;
+        height: 280px;
+    }
+
+    .developer-info {
+        flex: unset;
+        width: 100%;
+    }
+
+    .developer-info h3 {
+        font-size: 22px;
+        line-height: 1.3;
+    }
+
+    .developer-info p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    .developer-skills {
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .developer-skills span {
+        font-size: 14px;
+        padding: 4px 10px;
+    }
+
+    .developer-contact ul {
+        gap: 6px;
+        padding-left: 15px;
+        font-size: 16px;
+        list-style: none;
+        align-items: center;
+    }
+
+    .developer-contact a {
+        font-size: 16px;
+    }
+
+    .developer-contact .email {
+        font-size: 16px;
+        word-break: break-word;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    header .header-content {
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .desktop-nav {
+        display: none;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    .mobile-nav {
+        display: flex;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-nav {
+        display: none !important;
+    }
+}
+
+/* Загальні виправлення для всіх пристроїв */
+@media (max-width: 1200px) {
+    .container,
+    header .header-content,
+    .footer-container {
+        width: 95%;
+        max-width: 100%;
+    }
+}

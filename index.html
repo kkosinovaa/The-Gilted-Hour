@@ -1,48 +1,96 @@
 <!doctype html>
 <html lang="uk">
 <head>
+    <!-- Мета-інформація та кодування -->
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>The Gilded Hour</title>
+
+    <!-- Підключення Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style_index.css">
-    <link rel="stylesheet" href="reset.css">
+
+    <!-- Підключення власних стилів -->
+    <link rel="stylesheet" href="styles/style_index.css">
+    <link rel="stylesheet" href="styles/reset.css">
+
+    <!-- Фавіконки -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
 </head>
 <body>
-<!--HEADER-->
+<!--  HEADER -->
 <header>
     <div class="header-content">
+        <!-- Логотип -->
         <div class="logo">
             <h2>The Gilded</h2>
             <p>.hour</p>
         </div>
-        <nav>
+
+        <!-- Десктопна навігація -->
+        <nav class="desktop-nav">
             <ul>
                 <li><a href="index.html">Головна</a></li>
-                <li><a href="About.html">Про нас</a></li>
-                <li><a href="Menu.html">Меню</a></li>
-                <li><a href="Services.html">Наші послуги</a></li>
+                <li><a href="menu.html">Меню</a></li>
+                <li><a href="services.html">Послуги</a></li>
+                <li><a href="about.html">Про нас</a></li>
             </ul>
-            <a href="Contacts.html">
-                <button class="button-contacts">
+        </nav>
+        <div class="login">
+            <a href="contacts.html">
+                <button class="button-contacts header-button">
+                    <img src="img/phone.png" alt="Phone">
                     Контакти
-                    <img src="img/phone.png" alt="Телефон">
                 </button>
             </a>
-        </nav>
-    </div>
+
+            <div id="auth-container">
+                <a href="login.html">
+                    <button class="button-login header-button">
+                        <img src="img/profile.png" alt="">
+                        Увійти
+                    </button>
+                </a>
+            </div>
+        </div>
+        </div>
+
+        <!-- Бургер-меню для мобільних -->
+        <div class="burger-menu" id="burgerMenu">
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+            <div class="burger-line"></div>
+        </div>
+
+    <!-- Мобільна навігація -->
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="index.html">Головна</a></li>
+            <li><a href="menu.html">Меню</a></li>
+            <li><a href="services.html">Послуги</a></li>
+            <li><a href="about.html">Про нас</a></li>
+        </ul>
+        <a href="contacts.html">
+            <button class="button-contacts">
+                <img src="img/phone.png" alt="Phone">
+                Контакти
+            </button>
+        </a>
+    </nav>
 </header>
-<!--HEADER-->
+<!-- КІНЕЦЬ HEADER -->
+
+<!-- MAIN CONTENT -->
 <main>
+    <!-- Секція представлення з каруселлю -->
     <section class="section-representation">
         <div id="carouselExampleIndicators" class="carousel slide">
+            <!-- Індикатори каруселі -->
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
                         aria-current="true" aria-label="Slide 1"></button>
@@ -51,7 +99,10 @@
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                         aria-label="Slide 3"></button>
             </div>
+
+            <!-- Вміст каруселі -->
             <div class="carousel-inner">
+                <!-- Перший слайд -->
                 <div class="carousel-item active">
                     <img src="img/restaurant-interior.jpg"
                          class="d-block w-100" alt="Інтер'єр ресторану">
@@ -60,6 +111,8 @@
                         <p>Затишна атмосфера</p>
                     </div>
                 </div>
+
+                <!-- Другий слайд -->
                 <div class="carousel-item">
                     <img src="img/restaurant-food.jpg"
                          class="d-block w-100" alt="Страви ресторану">
@@ -68,6 +121,8 @@
                         <p>Від нашого шеф-кухаря</p>
                     </div>
                 </div>
+
+                <!-- Третій слайд -->
                 <div class="carousel-item">
                     <img src="img/restaurant-kitchen.jpg"
                          class="d-block w-100" alt="Кухня ресторану">
@@ -77,6 +132,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Кнопки управління каруселлю -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                     data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -90,25 +147,29 @@
         </div>
     </section>
 
+    <!-- Секція галереї -->
     <section class="section-gallery">
         <div class="gallery">
             <div class="divider"></div>
             <h2>Галерея</h2>
 
-            <!-- 🔹 Галерея для екранів >480px -->
+            <!--  Галерея для екранів >480px -->
             <div class="wrapper d-none d-sm-grid">
+                <!-- Зображення страв -->
                 <div class="item"><img src="img/food1.jpg" alt="Страва 1" loading="lazy"></div>
                 <div class="item"><img src="img/food2.jpg" alt="Страва 2" loading="lazy"></div>
                 <div class="item"><img src="img/food3.jpg" alt="Страва 3" loading="lazy"></div>
                 <div class="item"><img src="img/food4.jpg" alt="Страва 4" loading="lazy"></div>
                 <div class="item"><img src="img/food5.jpg" alt="Страва 5" loading="lazy"></div>
 
+                <!-- Зображення напоїв -->
                 <div class="item"><img src="img/drink1.jpg" alt="Напій 1" loading="lazy"></div>
                 <div class="item"><img src="img/drink2.jpg" alt="Напій 2" loading="lazy"></div>
                 <div class="item"><img src="img/drink3.jpg" alt="Напій 3" loading="lazy"></div>
                 <div class="item"><img src="img/drink4.jpg" alt="Напій 4" loading="lazy"></div>
                 <div class="item"><img src="img/drink5.jpg" alt="Напій 5" loading="lazy"></div>
 
+                <!-- Зображення інтер'єру -->
                 <div class="item"><img src="img/interior1.jpg" alt="Інтер'єр 1" loading="lazy"></div>
                 <div class="item"><img src="img/interior2.jpg" alt="Інтер'єр 2" loading="lazy"></div>
                 <div class="item"><img src="img/interior3.jpg" alt="Інтер'єр 3" loading="lazy"></div>
@@ -116,9 +177,10 @@
                 <div class="item"><img src="img/interior5.jpg" alt="Інтер'єр 5" loading="lazy"></div>
             </div>
 
-            <!-- 🔹 Карусель для мобільних (до 480px) -->
+            <!--  Карусель для мобільних (до 480px) -->
             <div id="mobileGallery" class="carousel slide d-block d-sm-none" data-bs-ride="carousel">
                 <div class="carousel-inner">
+                    <!-- Слайди для мобільних пристроїв -->
                     <div class="carousel-item active"><img src="img/food1.jpg" class="d-block w-100" alt="Страва 1"></div>
                     <div class="carousel-item"><img src="img/food2.jpg" class="d-block w-100" alt="Страва 2"></div>
                     <div class="carousel-item"><img src="img/food3.jpg" class="d-block w-100" alt="Страва 3"></div>
@@ -138,6 +200,7 @@
                     <div class="carousel-item"><img src="img/interior5.jpg" class="d-block w-100" alt="Інтер'єр 5"></div>
                 </div>
 
+                <!-- Кнопки управління мобільною каруселлю -->
                 <button class="carousel-control-prev" type="button" data-bs-target="#mobileGallery" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon"></span>
                 </button>
@@ -150,11 +213,14 @@
         </div>
     </section>
 </main>
+<!-- КІНЕЦЬ MAIN CONTENT -->
 
+<!-- КОНТАКТНА ФОРМА -->
 <div class="contacts-form">
     <div class="address">
         <h3>Як нас знайти?</h3>
         <p>м. Львів <br>вул. Шпитальна 1 (ТЦ MAGNUS), 3 поверх</p>
+        <!-- Google Maps -->
         <iframe class="map"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1819.3239733511416!2d24.02565813205273!3d49.84409901979377!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473add730c752709%3A0xc8c7f4cc48a1340c!2sMAGNUS!5e0!3m2!1suk!2sua!4v1758558595630!5m2!1suk!2sua"
                 width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
@@ -177,11 +243,14 @@
         </form>
     </div>
 </div>
+<!-- КІНЕЦЬ КОНТАКТНОЇ ФОРМИ -->
 
+<!-- FOOTER -->
 <footer>
     <div class="footer-container">
+        <!-- Соціальні мережі -->
         <div class="social-media">
-            <a href="#" target="_blank">
+            <a href="https://www.instagram.com/_.byl04ka._/" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg"
                      width="24" height="24"
                      viewBox="0 0 24 24"
@@ -196,7 +265,7 @@
                     <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/>
                 </svg>
             </a>
-            <a href="#" target="_blank">
+            <a href="https://www.facebook.com/viktoria.sakalo.2025/" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg"
                      width="24" height="24"
                      viewBox="0 0 24 24"
@@ -209,7 +278,7 @@
                     <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
                 </svg>
             </a>
-            <a href="https://www.linkedin.com/in/%D0%BA%D0%B0%D1%82%D0%B5%D1%80%D0%B8%D0%BD%D0%B0-%D0%BA%D0%BE%D1%81%D1%96%D0%BD%D0%BE%D0%B2%D0%B0-572275385/"
+            <a href="https://www.linkedin.com/in/%D0%B2%D1%96%D0%BA%D1%82%D0%BE%D1%80%D1%96%D1%8F-%D1%81%D0%B0%D0%BA%D0%B0%D0%BB%D0%BE-173269385/"
                target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg"
                      width="24" height="24"
@@ -226,20 +295,30 @@
                 </svg>
             </a>
         </div>
+
+        <!-- Платіжні системи -->
         <div class="visa">
             <img src="img/visa.png" alt="Visa">
             <img src="img/mastercard.png" alt="Mastercard">
         </div>
+
+        <!-- Контактна інформація -->
         <div class="contacts-footer">
             <p>Email: <a href="mailto:info@gildedhour.com">info@gildedhour.com</a></p>
             <p>Телефон: <a href="tel:+380501234567">+38 (050) 123-45-67</a></p>
         </div>
+
+        <!-- Авторські права -->
         <p class="rights">&copy; The Gilded Hour, all rights reserved 2025</p>
     </div>
 </footer>
+<!-- КІНЕЦЬ FOOTER -->
 
+<!-- SCRIPTS -->
+<script src="menu-burger.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+<!-- КІНЕЦЬ SCRIPTS -->
 </body>
 </html>
